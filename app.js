@@ -1,13 +1,12 @@
-//Create server
-var express = require('express'), app = express();
-// connect supplib
-var supplib = require('./supplib');
+var express = require('express'), app = express();//Create server
+var supplib = require('./supplib');// connect supplib
 app.set('views', __dirname); // for Jade rendering
+app.use('/templates', express.static(__dirname + '/templates')); //for css files
 
 app.get('/', function(req, res) 
 {
 	console.log('*Open title page*');
-    res.render('./Templates/index.jade', 
+    res.render('./templates/index.jade', 
     {
         title: 'My Site'
     });
