@@ -1,5 +1,6 @@
 exports.getTime = function getTime()
 {
-    var thistime = new Date();
-    return thistime;
+    var d = new Date();
+    //var time = d.day()+'/'+d.month+'/'+d.year+' '+d.time;
+    return d;
 }

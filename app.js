@@ -1,10 +1,16 @@
-var express = require('express');
-var app = express();
+//Create server
+var express = require('express'), app = express();
+// connect supplib
 var supplib = require('./supplib');
+app.set('views', __dirname); // for Jade rendering
 
 app.get('/', function(req, res) 
 {
-    res.send('Hello from Russia');
+	console.log('*Open title page*');
+    res.render('index.jade', 
+    {
+        title: 'My Site'
+    });
 });
 
 app.get('/id=:id([0-9]+)', function(req, res) 
