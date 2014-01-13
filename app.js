@@ -7,7 +7,7 @@ app.set('views', __dirname); // for Jade rendering
 app.get('/', function(req, res) 
 {
 	console.log('*Open title page*');
-    res.render('index.jade', 
+    res.render('./templates/index.jade', 
     {
         title: 'My Site'
     });
