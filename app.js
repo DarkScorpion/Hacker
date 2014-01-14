@@ -19,8 +19,8 @@ app.get('/girl=:girlName;:imageUrl', function(req, res)
     {
     	pageData:
     	{
-        	gName: 'girlName',
-        	iUrl: 'imageUrl'
+        	gName: req.params.girlName,
+        	iUrl: req.params.imageUrl
     	}
     });
 });
