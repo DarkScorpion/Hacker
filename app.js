@@ -17,11 +17,8 @@ app.get('/girl=:girlName;:imageUrl', function(req, res)
 	console.log('!Open girls page!');
     res.render('./templates/girl.jade', 
     {
-    	pageData:
-    	{
-        	gName: req.params.girlName,
-        	iUrl: req.params.imageUrl
-    	}
+        gName: req.params.girlName,
+        iUrl: req.params.imageUrl
     });
 });
 
