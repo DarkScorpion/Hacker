@@ -12,7 +12,7 @@ app.get('/', function(req, res)
     });
 });
 
-app.get('/girl=:girlName;:imageUrl', function(req, res) 
+app.get('/girl=:girlName;:imageUrl;', function(req, res) 
 {
 	console.log('!Open girls page!');
     res.render('./templates/girl.jade', 
@@ -36,7 +36,7 @@ app.get('/name=:name;:last', function(req, res)
 
 app.get('*', function(req, res) 
 {
-    res.send('Wrong Data', 404);
+    res.render('./templates/error404.jade',{});
     console.log('Wrong Params: '+req.params.length);
     for(var i=0;i<req.params.length;i++)
         console.log(req.params[i]);
