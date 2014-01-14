@@ -17,8 +17,11 @@ app.get('/girl=:girlName;:imageUrl', function(req, res)
 	console.log('!Open girls page!');
     res.render('./templates/girl.jade', 
     {
-        girlName: 'gName',
-        imageUrl: 'iUrl'
+    	pageData:
+    	{
+        	gName: 'girlName',
+        	iUrl: 'imageUrl'
+    	}
     });
 });
 

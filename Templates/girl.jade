@@ -1,14 +1,10 @@
 doctype html
-html(lang='en')
+html(lang='ru')
   head
-    title Самая любимая
+    title Самой любимой
     link(type='text/css', rel='stylesheet', href='/templates/site.css')
   body
     h1(align='center') Самая любимая и красивая
-    div#container.col
-      p Get on it!
-      p
-        | Jade is a terse and simple
-        | templating language with a
-        | strong focus on performance
-        | and powerful features.
+    div#container.col(align='center')
+      p img(src= #{pageData.iUrl}, alt='')
+      p #{pageData.gName}
