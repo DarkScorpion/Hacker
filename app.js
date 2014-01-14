@@ -12,6 +12,16 @@ app.get('/', function(req, res)
     });
 });
 
+app.get('/girl=:girlName;:imageUrl', function(req, res) 
+{
+	console.log('!Open girls page!');
+    res.render('./templates/girl.jade', 
+    {
+        girlName: 'gName',
+        imageUrl: 'iUrl'
+    });
+});
+
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
 	console.log('id='+req.params.id);
