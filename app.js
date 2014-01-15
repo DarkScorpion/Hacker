@@ -6,10 +6,7 @@ app.use('/templates', express.static(__dirname + '/templates')); //for css files
 app.get('/', function(req, res) 
 {
 	console.log('*Open title page*');
-    res.render('./templates/index.jade', 
-    {
-        title: 'My Site'
-    });
+    res.render('./templates/index.jade', {});
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
@@ -37,9 +34,7 @@ app.get('/name=:name;:last', function(req, res)
 app.get('*', function(req, res) 
 {
     res.render('./templates/error404.jade',{});
-    console.log('Wrong Params: '+req.params.length);
-    for(var i=0;i<req.params.length;i++)
-        console.log(req.params[i]);
+    console.log('Wrong Params: '+req.params[0]);
 });
 app.listen(process.env.VCAP_APP_PORT || 3000);
 
