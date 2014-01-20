@@ -1,4 +1,4 @@
-var express = require('express'), app = express();//Create server
+var express = require('express'), app = express(); //Create server
 var supplib = require('./supplib');// connect supplib
 app.set('views', __dirname); // for Jade rendering
 app.use('/templates', express.static(__dirname + '/templates')); //for css files
@@ -22,7 +22,7 @@ app.get('/girl=:girlName;:imageUrl;', function(req, res)
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
 	console.log('id='+req.params.id);
-    res.send('id='+req.params.id);
+    res.send(req.params.id);
 });
 
 app.get('/name=:name;:last', function(req, res)
