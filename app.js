@@ -3,6 +3,8 @@ var supplib = require('./supplib');// connect supplib
 app.set('views', __dirname); // for Jade rendering
 app.use(express.static(__dirname + '/templates')); //for css files
 
+app.listen(process.env.VCAP_APP_PORT || 3000);
+
 app.get('/', function(req, res)
 {
 	console.log('*Open title page*');
@@ -37,5 +39,4 @@ app.get('*', function(req, res)
     console.log('Wrong Params: '+req.params[0]);
 });
 
-app.listen(process.env.VCAP_APP_PORT || 3000);
-console.log('Node Express.js is runing: '+ supplib.getTime());
+console.log('NodeJS is runing: '+ supplib.getTime());
