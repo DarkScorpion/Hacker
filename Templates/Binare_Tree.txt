@@ -1,0 +1,97 @@
+﻿#include <iostream.h>
+#include <fstream.h>
+#include <windows.h>
+
+char*Rus(const char* text);
+char bufRus[256];
+char* Rus(const char* text)
+	{
+	CharToOem(text, bufRus);
+	return bufRus;
+	}
+
+struct List
+{
+	int data;
+	List *left;
+	List *right;
+};
+typedef List *tree;
+
+tree CreateTree(int n)
+{
+	tree head;
+	head=new List;
+	head->data=n;
+	head->left=NULL;
+	head->right=NULL;
+	return head;
+}
+
+void Insert(tree &head, int n)
+{
+	head=new List;
+	head->data=n;
+	head->right=NULL;
+	head->left=NULL;
+}
+
+void AddElement(tree &head, int n)
+{
+	tree curr = head;
+	while (true)
+		{
+		if (n>curr->data) 
+			{
+			if (curr->right==NULL) {Insert(curr->right,n); break;} 
+				else {curr=curr->right; continue;}
+			}
+			else 
+				{
+				if (curr->left==NULL) {Insert(curr->left,n); break;}
+					else {curr=curr->left; continue;}
+				}
+		}
+}
+
+void Find(tree &head, int n)
+{
+	tree curr=head;
+	if (curr->data==n) {cout<<Rus("Искомый элемент является головным \n"); return;}
+	while(true)
+	{
+	if (curr->data==n) {cout<<Rus("Искомый элемент найден \n"); return;}
+	if (n>curr->data) 
+			{
+			if (curr->right==NULL) {cout<<Rus("Искомого элемента нет в дереве \n"); return;}
+			cout<<curr->data<<" -> ";
+			curr=curr->right;
+			}
+		else 
+			{
+			if (curr->left==NULL) {cout<<Rus("Искомого элемента нет в дереве \n"); return;}
+			cout<<curr->data<<" -> ";
+			curr=curr->left;
+			}
+	
+	}
+}
+
+void main()
+{	
+	int n,i,z;
+	tree head;
+	cout<<Rus("Головной элемент= ");
+	cin>> z;
+	head=CreateTree(z);
+	cout<<Rus("Введите кол-во элементов в дереве ");
+	cin>> n;
+	for(i=0;i<n;i++)
+	{
+		cin>>z;
+		AddElement(head,z);
+	}
+	cout<<Rus("Введеите число для поиска в дереве ");
+	cin>> z;
+	Find(head,z);
+}
