@@ -73,7 +73,6 @@ void Find(tree &head, int n)
 			cout<<curr->data<<" -> ";
 			curr=curr->left;
 			}
-	
 	}
 }
 
