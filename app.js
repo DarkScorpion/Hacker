@@ -1,5 +1,6 @@
 var express = require('express'), app = express(); //Create server
 var supplib = require('./supplib');// connect supplib
+
 app.set('views', __dirname); // for Jade rendering
 app.use(express.static(__dirname + '/templates')); //for css and js files
 
