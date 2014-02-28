@@ -1,6 +1,9 @@
 #WebStorm
 .idea/
 
+#Other
+.afignore
+
 #############
 ## Eclipse ##
 #############
