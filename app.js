@@ -2,20 +2,20 @@ var express = require('express'), app = express(); //Create server
 var supplib = require('./supplib');// connect supplib
 
 app.set('views', __dirname); // for Jade rendering
-app.use(express.static(__dirname + '/templates')); //for css and js files
+app.use(express.static(__dirname + '/web')); //for css and js files
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
 
 app.get('/', function(req, res)
 {
 	console.log('>> Open title page');
-    res.render('./templates/index.jade', {});
+    res.render('./web/index.jade', {});
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
 {
 	console.log('>> Open girls page!');
-    res.render('./templates/girl.jade', 
+    res.render('./web/girl.jade', 
     {
         gName: req.params.girlName,
         iUrl: req.params.imageUrl
@@ -25,7 +25,7 @@ app.get('/girl=:girlName;:imageUrl;', function(req, res)
 app.get('/hacker', function(req, res) 
 {
 	console.log('>> Open hacker page');
-    res.render('./templates/hacker.jade', 
+    res.render('./web/hacker.jade', 
     {
         gName: req.params.girlName,
         iUrl: req.params.imageUrl
@@ -34,7 +34,7 @@ app.get('/hacker', function(req, res)
 
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
-	console.log('id='+req.params.id);
+	console.log('>> id='+req.params.id);
     res.send(req.params.id);
 });
 
@@ -46,7 +46,7 @@ app.get('/name=:name;:last;', function(req, res)
 
 app.get('*', function(req, res) 
 {
-    res.render('./templates/error404.jade',{});
+    res.render('./web/error404.jade',{});
     console.log('>> Wrong Params: '+req.params[0]);
 });
 
