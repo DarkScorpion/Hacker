@@ -1,5 +1,5 @@
 var express = require('express'), app = express(); //Create server
-var supplib = require('./supplib');// connect supplib
+var supplib = require('./supplib'); //connect supplib
 
 app.set('views', __dirname); // for Jade rendering
 app.use(express.static(__dirname + '/web')); //for css and js files
@@ -25,11 +25,7 @@ app.get('/girl=:girlName;:imageUrl;', function(req, res)
 app.get('/hacker', function(req, res) 
 {
 	console.log('>> Open hacker page');
-    res.render('./web/hacker.jade', 
-    {
-        gName: req.params.girlName,
-        iUrl: req.params.imageUrl
-    });
+    res.render('./web/hacker.jade');
 });
 
 app.get('/id=:id([0-9]+)', function(req, res) 
@@ -46,7 +42,7 @@ app.get('/name=:name;:last;', function(req, res)
 
 app.get('*', function(req, res) 
 {
-    res.render('./web/error404.jade',{});
+    res.render('./web/error404.jade');
     console.log('>> Wrong Params: '+req.params[0]);
 });
 
