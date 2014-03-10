@@ -1,5 +1,5 @@
-var express = require('express'), app = express(); //Create server
-var supplib = require('./supplib'); //connect supplib
+var express = require('express'), app = express(); //Create server Express
+var supplib = require('./supplib'); //connect supplib.js
 
 app.set('views', __dirname); // for Jade rendering
 app.use(express.static(__dirname + '/web')); //for css and js files
@@ -9,41 +9,35 @@ app.listen(process.env.VCAP_APP_PORT || 3000);
 app.get('/', function(req, res)
 {
 	console.log('>> Open title page');
-    res.render('./web/index.jade', {});
+	res.render('./web/hacker.jade');
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
 {
 	console.log('>> Open girls page!');
-    res.render('./web/girl.jade', 
+	res.render('./web/girl.jade', 
     {
-        gName: req.params.girlName,
-        iUrl: req.params.imageUrl
+		gName: req.params.girlName,
+		iUrl: req.params.imageUrl
     });
-});
-
-app.get('/hacker', function(req, res) 
-{
-	console.log('>> Open hacker page');
-    res.render('./web/hacker.jade');
 });
 
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
 	console.log('>> id='+req.params.id);
-    res.send(req.params.id);
+	res.send(req.params.id);
 });
 
 app.get('/name=:name;:last;', function(req, res)
 {
     res.send('Hello '+req.params.name+' '+req.params.last);
-    console.log('Name='+req.params.name+'; Last='+req.params.last);
+	console.log('Name='+req.params.name+'; Last='+req.params.last);
 });
 
 app.get('*', function(req, res) 
 {
     res.render('./web/error404.jade');
-    console.log('>> Wrong Params: '+req.params[0]);
+	console.log('>> Wrong Params: '+req.params[0]);
 });
 
 console.log('>> NodeJS is runing: '+ supplib.getTime());
