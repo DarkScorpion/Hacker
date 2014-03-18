@@ -10,7 +10,7 @@ app.listen(process.env.VCAP_APP_PORT || 3000);
 app.get('/', function(req, res)
 {
 	res.render('./web/hacker.jade');
-	console.log('%s Open title page',sp.getTime());
+	console.log('%s Open title page from %s',sp.getTime(),req.ip);
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
