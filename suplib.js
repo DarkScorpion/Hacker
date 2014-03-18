@@ -10,3 +10,10 @@ exports.info = function (str)
 {
 	console.log(getTime()+' '+str);
 }
+
+exports.getClientIP = function (request)
+{ 
+    with(request)
+        return (headers['x-forwarded-for'] || '').split(',')[0] 
+            || connection.remoteAddress
+}
