@@ -10,12 +10,12 @@ app.listen(process.env.VCAP_APP_PORT || 3000);
 app.get('/', function(req, res)
 {
 	res.render('./web/hacker.jade');
-	console.log('%s Open title page from %s',sp.getTime(),req.ip);
+	sp.info('Open title page from '+req.ip);
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
 {
-	console.log('%s Open girls page!', sp.getTime());
+	sp.info('Open girls page!');
 	res.render('./web/girl.jade', 
     {
 		gName: req.params.girlName,
@@ -26,19 +26,19 @@ app.get('/girl=:girlName;:imageUrl;', function(req, res)
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
 	res.send(req.params.id);
-	console.log('%s id='+req.params.id, sp.getTime());
+	sp.info('id='+req.params.id);
 });
 
 app.get('/name=:name;:last;', function(req, res)
 {
     res.send('Hello '+req.params.name+' '+req.params.last);
-	console.log('%s Name='+req.params.name+'; Last='+req.params.last, sp.getTime());
+	sp.info('Name='+req.params.name+'; Last='+req.params.last);
 });
 
 app.get('*', function(req, res) 
 {
     res.render('./web/error404.jade');
-	console.log('%s Wrong Params: '+req.params[0], sp.getTime());
+	sp.info('Wrong Params: '+req.params[0]);
 });
 
-console.log('%s NodeJS is runing', sp.getTime());
+sp.info('NodeJS is runing');
