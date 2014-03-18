@@ -1,5 +1,5 @@
 var express = require('express'), app = express(); //Create server Express
-var supplib = require('./supplib'); //connect supplib.js
+var sp = require('./suplib'); //connect suplib.js
 
 app.set('views', __dirname); //for Jade rendering
 app.use(express.favicon('web/console.ico')); //icon of site
@@ -41,4 +41,4 @@ app.get('*', function(req, res)
 	console.log('> Wrong Params: '+req.params[0]);
 });
 
-console.log('> NodeJS is runing: '+ supplib.getTime());
+console.log(sp.getTime()+' NodeJS is runing');
