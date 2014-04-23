@@ -32,13 +32,13 @@ app.get('/id=:id([0-9]+)', function(req, res)
 app.get('/name=:name;:last;', function(req, res)
 {
     res.send('Hello '+req.params.name+' '+req.params.last);
-	sp.info('Name='+req.params.name+'; Last='+req.params.last);
+	sp.info('Name='+req.params.name+' Last='+req.params.last);
 });
 
 app.get('*', function(req, res) 
 {
     res.render('./web/error404.jade');
-	sp.info('Wrong Params: '+req.params[0]);
+	sp.info('Wrong params: '+req.params[0]);
 });
 
 sp.info('NodeJS is runing');
