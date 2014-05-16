@@ -1,4 +1,4 @@
-exports.info = function (str)
+exports.i = function (str) //i = info
 {
 	console.log(getTime()+' '+str);
 }
