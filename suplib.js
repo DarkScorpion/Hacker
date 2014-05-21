@@ -1,6 +1,11 @@
 exports.i = function (str) //i = info
 {
-	console.log(getTime()+' '+str);
+	console.log(iTime()+' '+str);
+}
+
+exports.d = function (str) //d = debug
+{
+	console.log(dTime()+' '+str);
 }
 
 exports.getClientIP = function (req)
@@ -10,10 +15,18 @@ exports.getClientIP = function (req)
             || connection.remoteAddress;
 }
 
-function getTime()
+function iTime()
 {
     var d = new Date();
 	s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
 	t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+    return '['+s+' '+t+']';
+}
+
+function dTime()
+{
+    var d = new Date();
+	s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
+	t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+':'+d.getMilliseconds();
     return '['+s+' '+t+']';
 }
