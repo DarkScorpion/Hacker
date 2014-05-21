@@ -8,6 +8,14 @@ exports.d = function (str) //d = debug
 	console.log(dTime()+' '+str);
 }
 
+exports.sms = function (id, number, text)
+{
+	//TODO
+	console.log(iTime()+' '+'Sms is send:'+
+		'\n\tnumber: '+number+
+		'\n\tmessage: '+text);
+}
+
 exports.getClientIP = function (req)
 { 
     with(req)
