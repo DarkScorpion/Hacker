@@ -11,7 +11,7 @@ exports.d = function (str) //d = debug
 exports.sms = function (id, number, text)
 {
 	//TODO
-	console.log(iTime()+' '+'Sms is send:'+
+	console.log (iTime()+' Sms is send:'+
 		'\n\tnumber: '+number+
 		'\n\tmessage: '+text);
 }
