@@ -17,12 +17,22 @@ body {
     left: 50px;
 }
 
+#cube2 {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+}
+
 .leftcol {
-    width: 35%;
+    width: 30%;
 }
 
 .textcol {
 
+}
+
+.rightcol {
+    width: 20%
 }
 
 .accessGranted {
