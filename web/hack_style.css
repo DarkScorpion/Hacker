@@ -11,13 +11,14 @@ body {
     cellspacing: 0;
     cellpadding: 0;
 }
-#cube1 {
+
+#dgirl {
     position: fixed;
     top: 50px;
     left: 50px;
 }
 
-#cube2 {
+#cube1 {
     position: fixed;
     top: 50px;
     right: 50px;
