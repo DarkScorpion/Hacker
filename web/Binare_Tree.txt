@@ -74,7 +74,7 @@ void Find(tree &head, int n)
 	tree curr = head;
 	if (curr->data==n) 
 		{
-			cout<<Rus("Искомый элемент является головным \n"); 
+			cout<<Rus("Элемент найден \n"); 
 			return;
 		}
 	while(true)
@@ -88,7 +88,7 @@ void Find(tree &head, int n)
 		{
 			if (curr->right==NULL) 
 			{
-				cout<<Rus("Искомого элемента нет в дереве \n"); 
+				cout<<Rus("Элемент не обнаружен \n"); 
 				return;
 			}
 			cout<<curr->data<<" -> ";
@@ -98,7 +98,7 @@ void Find(tree &head, int n)
 		{
 			if (curr->left==NULL) 
 				{
-					cout<<Rus("Искомого элемента нет в дереве \n"); 
+					cout<<Rus("Элемент не обнаружен \n"); 
 					return;
 				}
 			cout<<curr->data<<" -> ";
@@ -111,17 +111,17 @@ void main()
 {	
 	tree head;
 	int i,n,z;
-	cout<<Rus("Головной элемент= ");
+	cout<<Rus("Корневой элемент: ");
 	cin>> z;
 	head = CreateTree(z);
-	cout<<Rus("Введите кол-во элементов в дереве ");
+	cout<<Rus("Кол-во элементов в дереве: ");
 	cin>> n;
 	for(i=0;i<n;i++)
 	{
 		cin>>z;
 		AddElement(head,z);
 	}
-	cout<<Rus("Введеите число для поиска в дереве ");
+	cout<<Rus("Элемент для поиска: ");
 	cin>> z;
 	Find(head,z);
 }
