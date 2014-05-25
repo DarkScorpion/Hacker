@@ -11,6 +11,11 @@ body {
     cellspacing: 0;
     cellpadding: 0;
 }
+#cube1 {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
 
 .leftcol {
     width: 35%;
@@ -19,6 +24,7 @@ body {
 .textcol {
 
 }
+
 .accessGranted {
     position: absolute;
     top: 200px;
