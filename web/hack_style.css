@@ -24,6 +24,12 @@ body {
     right: 50px;
 }
 
+#cube2 {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
 .leftcol {
     width: 30%;
 }
