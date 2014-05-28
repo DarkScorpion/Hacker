@@ -26,15 +26,15 @@ exports.getClientIP = function (req)
 function iTime()
 {
     var d = new Date();
-    s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-    t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+    var s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
+    var t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
     return '['+s+' '+t+']';
 }
 
 function dTime()
 {
     var d = new Date();
-    s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-    t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+':'+d.getMilliseconds();
+    var s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
+    var t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+':'+d.getMilliseconds();
     return '['+s+' '+t+']';
 }
