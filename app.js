@@ -4,7 +4,6 @@ var sp = require('./suplib'); //connect support library
 app.set('views/', __dirname); //for Jade rendering
 app.use(express.favicon('web/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
-//app.use(express.basicAuth('a_name', 'A_PASS')); //authorization connect
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
 
