@@ -1,7 +1,8 @@
-var express = require('express'), app = express(); //Create server Express
+﻿var express = require('express'), app = express(); //Create server Express
 var sp = require('./suplib'); //connect support library
 
 app.set('views/', __dirname); //for Jade rendering
+app.use(express.bodyParser()); //for ajax json
 app.use(express.favicon('web/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
@@ -11,6 +12,17 @@ app.get('/', function(req, res)
 {
     res.render('hacker.jade');
     sp.i('Open title page from ' + sp.getClientIP(req));
+});
+
+app.get('/ajax', function(req, res)
+{
+    res.render('ajax.jade');
+    sp.i('Ajax page open');
+});
+
+app.get('/api', function(req, res)
+{
+    //TODO
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
