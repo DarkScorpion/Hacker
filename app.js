@@ -2,7 +2,7 @@
 var sp = require('./suplib'); //connect support library
 
 app.set('views/', __dirname); //for Jade rendering
-app.use(express.bodyParser()); //for ajax json
+//app.use(express.bodyParser()); //for ajax json
 app.use(express.favicon('web/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
@@ -22,18 +22,10 @@ app.get('/ajax', function(req, res)
 
 app.get('/api', function(req, res)
 {
-    //TODO
+    res.send(req);
+    sp.i('Ajax reqwest: ' + req);
 });
 
-app.get('/girl=:girlName;:imageUrl;', function(req, res) 
-{
-    sp.i('Open girls page!');
-    res.render('girl.jade', 
-    {
-        gName: req.params.girlName,
-        iUrl: req.params.imageUrl
-    });
-});
 
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
@@ -45,6 +37,16 @@ app.get('/name=:name;:last;', function(req, res)
 {
     res.send('Hello '+req.params.name+' '+req.params.last);
     sp.i('Name='+req.params.name+' Last='+req.params.last);
+});
+
+app.get('/girl=:girlName;:imageUrl;', function(req, res) 
+{
+    sp.i('Open girls page!');
+    res.render('girl.jade', 
+    {
+        gName: req.params.girlName,
+        iUrl: req.params.imageUrl
+    });
 });
 
 app.get('*', function(req, res) 
