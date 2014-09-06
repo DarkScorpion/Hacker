@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   $('#ajaxButton').click(function(){
     var sData = {
-      boxText: $('#ajaxInput').val
+      boxText: $('#ajaxInput').val();
     };
 
     console.log(sData); //отладка
