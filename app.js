@@ -20,10 +20,10 @@ app.get('/ajax', function(req, res)
   sp.i('Ajax page open');
 });
 
-app.get('/api', function(req, res)
+app.post('/api', function(req, res)
 {
-  res.send(req);
-  sp.i('Ajax reqwest: ' + req);
+  res.send(req.text);
+  sp.i('Ajax reqwest: ' + req.text);
 });
 
 
