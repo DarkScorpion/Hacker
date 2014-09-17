@@ -8,12 +8,19 @@ exports.d = function (str) //d = debug
   console.log(dTime()+' '+str);
 }
 
-exports.sms = function (id, number, text)
+exports.info_sms = function (text)
 {
-  //TODO
-  console.log (iTime()+' Sms is send:'+
-    '\n\tnumber: '+number+
-    '\n\tmessage: '+text);
+  var isSend;
+  var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
+    && typeof process.env.phone !== 'undefined');
+  if (isVariableCorrect){
+    //TODO
+
+    isSend = ' Sms SEND:';
+  }
+  else isSend = 'Sms NOT send:';
+
+  this.i( isSend + '\n\t' + text);
 }
 
 exports.getClientIP = function (req)
