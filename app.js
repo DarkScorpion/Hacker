@@ -10,7 +10,7 @@ app.listen(process.env.VCAP_APP_PORT || 3000);
 
 app.get('/', function(req, res)
 {
-  //sp.info_sms('Test sms');
+  sp.info_sms('Test sms');
   res.render('hacker.jade');
   sp.i('Open title page from ' + sp.getClientIP(req));
 });
