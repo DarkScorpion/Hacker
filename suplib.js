@@ -15,11 +15,13 @@ exports.info_sms = function (text)
   var isSend;
   var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
     && typeof process.env.phone !== 'undefined');
+
   if (isVariableCorrect){
     httpSmsRequest(process.env.sms_key, process.env.phone, text);
     isSend = ' Sms SEND:';
   }
-  else isSend = 'Sms NOT send:';
+  else isSend = ' Sms NOT send:';
+  
   console.log(iTime() + isSend + '\n\t' + text);
 }
 

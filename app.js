@@ -2,15 +2,16 @@
 var sp = require('./suplib'); //connect support library
 
 app.set('views/', __dirname); //for Jade rendering
-//app.use(express.bodyParser()); //for ajax json
+app.use(express.bodyParser()); //for ajax json
 app.use(express.favicon('web/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
-app.listen(process.env.VCAP_APP_PORT || 3000);
+app.listen(process.env.VCAP_APP_PORT || 3000, function(){
+  sp.i('NodeJS is runing');
+});
 
 app.get('/', function(req, res)
 {
-  sp.info_sms('Test sms');
   res.render('hacker.jade');
   sp.i('Open title page from ' + sp.getClientIP(req));
 });
@@ -23,8 +24,11 @@ app.get('/ajax', function(req, res)
 
 app.post('/api', function(req, res)
 {
-  res.send(req.text);
-  sp.i('Ajax reqwest: ' + req.text);
+  sendData = {
+    result: "succses"
+  }
+  res.send(sendData);
+  sp.i('Ajax reqwest: ' + req);
 });
 
 
@@ -55,5 +59,3 @@ app.get('*', function(req, res)
   res.render('error404.jade');
   sp.i('Wrong params: '+req.params[0]);
 });
-
-sp.i('NodeJS is runing');
