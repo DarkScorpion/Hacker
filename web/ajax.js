@@ -12,9 +12,9 @@ $(document).ready(function(){
       type: 'POST',
       url: URI,
       dataType: 'json',
-      data: JSON.stringify(sData),
+      data: sData,
       success: function(data) {
-        console.log(data);
+        console.log(JSON.stringify(data));
         //$('#ajaxOutput').load(data);
       },
       error: function(jqXHR, textStatus, errThrown) {
