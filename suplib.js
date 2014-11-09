@@ -1,8 +1,9 @@
 ﻿var http = require('http');
+var colors = require('colors');
 
 exports.i = function (str) //i = info
 {
-  console.log(iTime()+' '+str);
+  console.log(iTime()+' '+str.magenta);
 }
 
 exports.d = function (str) //d = debug
