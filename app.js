@@ -26,9 +26,9 @@ app.get('/ajax', function(req, res)
 app.post('/api', function(req, res)
 {
   sendData = {
-    result: "succses"
-  }
-  console.log(req.body);
+    result: req.body.boxText //return box text
+  } 
+
   res.send(sendData);
   sp.i('Ajax reqwest: ' + JSON.stringify(req.body));
 });
