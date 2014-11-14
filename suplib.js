@@ -3,7 +3,7 @@ var colors = require('colors');
 
 exports.i = function (str) //i = info
 {
-  console.log(iTime()+' '+str.magenta);
+  console.log(iTime()+' '+str);
 }
 
 exports.d = function (str) //d = debug
@@ -13,15 +13,15 @@ exports.d = function (str) //d = debug
 
 exports.info_sms = function (text)
 {
-  var isSend;
+  var isSend = '???';
   var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
     && typeof process.env.phone !== 'undefined');
 
   if (isVariableCorrect){
     httpSmsRequest(process.env.sms_key, process.env.phone, text);
-    isSend = ' Sms SEND:';
+    isSend = ' Sms SEND:'.green;
   }
-  else isSend = ' Sms NOT send:';
+  else isSend = ' Sms NOT send:'.red;
   
   console.log(iTime() + isSend + '\n\t' + text);
 }
@@ -35,11 +35,11 @@ exports.getClientIP = function (req)
 
 function httpSmsRequest(key, phone, text)
 {
-  var pageUrl = 'http://sms.ru/sms/send?api_id=' + key +
+  var smsUrl = 'http://sms.ru/sms/send?api_id=' + key +
     '&to=' + phone +
     '&text=' + text.replace(' ', '+');
 
-  http.get(pageUrl, function(res){
+  http.get(smsUrl, function(res){
     console.log('Response sms: ' + res);
   });
 }

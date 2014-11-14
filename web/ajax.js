@@ -15,7 +15,7 @@ $(document).ready(function(){
       data: sData,
       success: function(data) {
         console.log(JSON.stringify(data));
-        //$('#ajaxOutput').load(data);
+        $('#ajaxOutput').html(data.result);
       },
       error: function(jqXHR, textStatus, errThrown) {
         console.log(jqXHR + ' ' + textStatus + ' ' + errThrown);

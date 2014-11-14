@@ -3,10 +3,7 @@ var sp = require('./suplib'); //connect support library
 
 //app.use(express.logger());
 app.set('views/', __dirname); //for Jade rendering
-//app.use(express.bodyParser()); //for ajax json
-//app.use(express.urlencoded());
-//app.use(express.json());
-//app.use(express.urlencoded());
+app.use(express.bodyParser()); //for ajax json
 app.use(express.favicon('web/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
@@ -31,6 +28,7 @@ app.post('/api', function(req, res)
   sendData = {
     result: "succses"
   }
+  console.log(req.body);
   res.send(sendData);
   sp.i('Ajax reqwest: ' + JSON.stringify(req.body));
 });
