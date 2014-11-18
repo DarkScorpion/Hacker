@@ -1,16 +1,16 @@
-Ôªøvar URI = 'http://localhost:3000/api';
+var ajaxUrl = '/api';
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-  $('#ajaxButton').click(function(){
+  $('#ajaxButton').click(function() {
     var sData = {
       boxText: $('#ajaxInput').val()
     };
-    console.log(sData); //–æ—Ç–ª–∞–¥–∫–∞
+    console.log(sData); //ÓÚÎ‡‰Í‡
     
     $.ajax({
       type: 'POST',
-      url: URI,
+      url: ajaxUrl,
       dataType: 'json',
       data: sData,
       success: function(data) {

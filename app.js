@@ -1,4 +1,5 @@
-﻿var express = require('express'), app = express(); //Create server Express
+﻿var express = require('express'), 
+    app = express(); //Create server Express
 var sp = require('./suplib'); //connect support library
 
 //app.use(express.logger());
@@ -7,7 +8,7 @@ app.use(express.bodyParser()); //for ajax json
 app.use(express.favicon('web/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
-app.listen(process.env.VCAP_APP_PORT || 3000, function(){
+app.listen(process.env.VCAP_APP_PORT || 3000, function() {
   sp.i('NodeJS is runing');
 });
 
@@ -25,11 +26,11 @@ app.get('/ajax', function(req, res)
 
 app.post('/api', function(req, res)
 {
-  sendData = {
+  returnData = {
     result: req.body.boxText //return box text
-  } 
+  };
 
-  res.send(sendData);
+  res.send(returnData);
   sp.i('Ajax reqwest: ' + JSON.stringify(req.body));
 });
 
