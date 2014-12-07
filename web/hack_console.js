@@ -3,8 +3,7 @@
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
 */
 
-$(
-  function () {
+$(function () {
     $(document).keydown(
       function (event) {
         Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
@@ -16,37 +15,37 @@ $(
 var Typer = {
   text: null,
   accessCountimer: null,
-  index: 0, // current cursor position
-  speed: 2, // speed of the Typer
+  index: 0, //current cursor position
+  speed: 2, //speed of the Typer
   file: "", //file, must be setted
   accessCount: 0, //times alt is pressed for Access Granted
   deniedCount: 0, //times caps is pressed for Access Denied
-  init: function () {// inizialize Hacker Typer
-    accessCountimer = setInterval(function () { Typer.updLstChr(); }, 500); // inizialize timer for blinking cursor
-    $.get(Typer.file, function (data) {// get the text file
-      Typer.text = data;// save the textfile in Typer.text
+  init: function () { //inizialize Hacker Typer
+    accessCountimer = setInterval(function () { Typer.updLstChr(); }, 500); //inizialize timer for blinking cursor
+    $.get(Typer.file, function (data) { //get the text file
+      Typer.text = data; //save the textfile in Typer.text
     });
   },
 
   content: function () {
-    return $("#console").html();// get console content
+    return $("#console").html(); //get console content
   },
 
-  write: function (str) {// append to console content
+  write: function (str) { //append to console content
     $("#console").append(str);
     return false;
   },
 
-  makeAccess: function () {//create Access Granted popUp      FIXME: popup is on top of the page and doesn't show is the page is scrolled
-    Typer.hidepop(); // hide all popups
+  makeAccess: function () { //create Access Granted popUp  FIXME: popup is on top of the page and doesn't show is the page is scrolled
+    Typer.hidepop(); //hide all popups
     Typer.accessCount = 0; //reset count
-    var ddiv = $("<div id='gran'>").html(""); // create new blank div and id "gran"
-    ddiv.addClass("accessGranted"); // add class to the div
-    ddiv.html("<h1>ACCESS GRANTED</h1>"); // set content of div
-    $(document.body).prepend(ddiv); // prepend div to body
+    var ddiv = $("<div id='gran'>").html(""); //create new blank div and id "gran"
+    ddiv.addClass("accessGranted"); //add class to the div
+    ddiv.html("<h1>ACCESS GRANTED</h1>"); //set content of div
+    $(document.body).prepend(ddiv); //prepend div to body
     return false;
   },
-  makeDenied: function () {//create Access Denied popUp      FIXME: popup is on top of the page and doesn't show is the page is scrolled
+  makeDenied: function () {//create Access Denied popUp  FIXME: popup is on top of the page and doesn't show is the page is scrolled
     Typer.hidepop(); // hide all popups
     Typer.deniedCount = 0; //reset count
     var ddiv = $("<div id='deni'>").html(""); // create new blank div and id "deni"
@@ -56,15 +55,15 @@ var Typer = {
     return false;
   },
 
-  hidepop: function () {// remove all existing popups
+  hidepop: function () { //remove all existing popups
     $("#deni").remove();
     $("#gran").remove();
   },
 
-  addText: function (key) {//Main function to add the code
-    if (key.keyCode == 18) {// key 18 = alt key
+  addText: function (key) { //Main function to add the code
+    if (key.keyCode == 18) { // key 18 = alt key
       Typer.accessCount++; //increase counter 
-      if (Typer.accessCount >= 3) {// if it's presed 3 times
+      if (Typer.accessCount >= 3) { // if it's presed 3 times
         Typer.makeAccess(); // make access popup
       }
     } else if (key.keyCode == 20) {// key 20 = caps lock
@@ -82,7 +81,7 @@ var Typer = {
         Typer.index += Typer.speed; // add to the index the speed
       } else {
         if (Typer.index > 0) // else if index is not less than 0 
-          Typer.index -= Typer.speed;// remove speed for deleting text
+          Typer.index -= Typer.speed; //remove speed for deleting text
       }
       var text = $("<div/>").text(Typer.text.substring(0, Typer.index)).html();// parse the text for stripping html enities
       var rtn = new RegExp("\n", "g"); // newline regex
