@@ -3,21 +3,21 @@ html(lang='en')
 head
   meta(charset='utf-8')
   title Hacker Console
-  link(href='/hack_style.css', rel='stylesheet', type='text/css')
-  script(src='/jquery-1.7.2.min.js', type='text/javascript')
-  script(src='/hack_console.js', type='text/javascript')
+  link(href='/css/hack_style.css', rel='stylesheet', type='text/css')
+  script(src='/js/jquery-1.7.2.min.js', type='text/javascript')
+  script(src='/js/hack_console.js', type='text/javascript')
   script
     | Typer.speed = 3;
-    | Typer.file = '/Binare_Tree.txt';
+    | Typer.file = '/other/Binare_Tree.txt';
     | Typer.init();
   body
     table.tb
       tr
         td.leftcol
-          img#dgirl(src='/dance_girl.gif')
+          img#dgirl(src='/img/dance_girl.gif')
         td.textcol
           #console
         td.rightcol
-          img#cube1(src='/orb.gif')
+          img#cube1(src='/img/orb.gif')
           p
-          img#cube2(src='/cube.gif')
+          img#cube2(src='/img/cube.gif')
