@@ -1,7 +1,6 @@
 ﻿#include <iostream.h>
 #include <windows.h>
 
-char* Rus(const char* text);
 char  bufRus[256];
 char* Rus(const char* text)
 {
