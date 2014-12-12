@@ -17,7 +17,7 @@ exports.info_sms = function (text)
   var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
     && typeof process.env.phone !== 'undefined');
 
-  if (isVariableCorrect){
+  if (isVariableCorrect) {
     httpSmsRequest(process.env.sms_key, process.env.phone, text);
     isSend = ' Sms SEND:'.green;
   }

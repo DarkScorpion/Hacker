@@ -1,11 +1,11 @@
 ﻿var express = require('express'), 
-    app = express(); //Create server Express
+    app = express(); //create server Express
 var sp = require('./suplib'); //connect support library
 
 //app.use(express.logger());
-app.set('views/', __dirname); //for Jade rendering
+app.set('views/', __dirname); //for jade rendering
 app.use(express.bodyParser()); //for ajax json
-app.use(express.favicon('web/console.ico')); //icon of site
+app.use(express.favicon('web/other/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
 app.listen(process.env.VCAP_APP_PORT || 3000, function() {
@@ -45,6 +45,12 @@ app.get('/name=:name;:last;', function(req, res)
 {
   res.send('Hello '+req.params.name+' '+req.params.last);
   sp.i('Name='+req.params.name+' Last='+req.params.last);
+});
+
+app.get('/codes', function(req, res)
+{
+  res.render('codes.jade');
+  sp.i('Codes page open');
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 
