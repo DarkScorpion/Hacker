@@ -1,4 +1,4 @@
-﻿var express = require('express'), 
+var express = require('express'),
     app = express(); //create server Express
 var sp = require('./suplib'); //connect support library
 
@@ -33,7 +33,6 @@ app.post('/api', function(req, res)
   res.send(returnData);
   sp.i('Ajax reqwest: ' + JSON.stringify(req.body));
 });
-
 
 app.get('/id=:id([0-9]+)', function(req, res) 
 {

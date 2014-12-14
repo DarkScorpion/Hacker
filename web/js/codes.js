@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var randNum;
-  var timeout = 500;
+  var timeout = 300;
   var codeBlocks = $('.code-block');
   var changeNumbers = setInterval(function () {
     codeBlocks.each(function() {
@@ -11,6 +11,7 @@ $(document).ready(function() {
  }, timeout);
  
 });
+
 function RandomNumber(min, max)
 {
   return Math.random() * (max - min) + min;

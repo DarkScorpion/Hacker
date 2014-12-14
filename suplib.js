@@ -39,7 +39,7 @@ function httpSmsRequest(key, phone, text)
     '&to=' + phone +
     '&text=' + text.replace(' ', '+');
 
-  http.get(smsUrl, function(res){
+  http.get(smsUrl, function(res) {
     console.log('Response sms: ' + res);
   });
 }
