@@ -46,10 +46,10 @@ app.get('/name=:name;:last;', function(req, res)
   sp.i('Name='+req.params.name+' Last='+req.params.last);
 });
 
-app.get('/codes', function(req, res)
+app.get('/pin', function(req, res)
 {
-  res.render('codes.jade');
-  sp.i('Codes page open');
+  res.render('pin.jade');
+  sp.i('Pin page open');
 });
 
 app.get('/girl=:girlName;:imageUrl;', function(req, res) 

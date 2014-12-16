@@ -1,7 +1,9 @@
 $(document).ready(function() {
+  
   var randNum;
   var timeout = 300;
   var codeBlocks = $('.code-block');
+
   var changeNumbers = setInterval(function () {
     codeBlocks.each(function() {
       randNum = parseInt(RandomNumber(1000, 9999));
