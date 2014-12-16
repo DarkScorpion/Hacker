@@ -2,8 +2,8 @@ doctype html
 html
   head
   title Codes
-  link(href='/css/hacker.css', rel='stylesheet', type='text/css')
   link(href='/css/pin.css', rel='stylesheet', type='text/css')
+  link(href='/css/hacker.css', rel='stylesheet', type='text/css')
   script(src='/js/jquery-1.7.2.min.js')
   script(src='/js/pin.js')
   body
@@ -12,12 +12,23 @@ html
       tr
         td.leftPin
           - for (var i = 0; i < colNumber; i++) {
-              div.code-block
+              .code-block
           - }
         td.mainPin
-          
+          div.num-box
+            .numitem 1
+            .numitem 2
+            .numitem 3
+            .numitem 4
+            .numitem 5
+            .numitem 6
+            .numitem 7
+            .numitem 8
+            .numitem 9
+            .numitem #
+            .numitem 0
+            .numitem @
         td.rightPin
           - for (var i = 0; i < colNumber; i++) {
-              div.code-block
+              .code-block
           - }
-    
