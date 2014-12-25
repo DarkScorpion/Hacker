@@ -1,6 +1,8 @@
 ﻿var http = require('http');
 var colors = require('colors');
 
+var config = require('./config.json');
+
 exports.i = function (str) //i = info
 {
   console.log(iTime()+' '+str);
@@ -26,13 +28,6 @@ exports.info_sms = function (text)
   console.log(iTime() + isSend + '\n\t' + text);
 }
 
-exports.getClientIP = function (req)
-{ 
-  with(req)
-    return (headers['x-forwarded-for'] || '').split(',')[0] 
-      || connection.remoteAddress;
-}
-
 function httpSmsRequest(key, phone, text)
 {
   var smsUrl = 'http://sms.ru/sms/send?api_id=' + key +
@@ -42,6 +37,13 @@ function httpSmsRequest(key, phone, text)
   http.get(smsUrl, function(res) {
     console.log('Response sms: ' + res);
   });
+}
+
+exports.getClientIP = function (req)
+{
+  with(req)
+    return (headers['x-forwarded-for'] || '').split(',')[0] 
+      || connection.remoteAddress;
 }
 
 function iTime()

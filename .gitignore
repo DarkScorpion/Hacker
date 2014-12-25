@@ -1,3 +1,6 @@
+#config file
+config.json
+
 #WebStorm
 .idea/
 
@@ -25,4 +28,3 @@ Desktop.ini
 
 # Mac crap
 .DS_Store
-
