@@ -1,16 +1,24 @@
 ﻿var http = require('http');
 var colors = require('colors');
+var Mailgun = require('mailgun').Mailgun;
 
 var config = require('./config.json');
+var mg = new Mailgun(config.email_key);
 
-exports.i = function (str) //i = info
+exports.info_email = function (subject, emailТext)
 {
-  console.log(iTime()+' '+str);
+  sendEmail(config.info_email, subject, emailТext);
 }
 
-exports.d = function (str) //d = debug
+exports.sendEmail = function (recipient, subject, emailТext)
 {
-  console.log(dTime()+' '+str);
+  var standartFrom = 'nodejs@mySite.com'
+
+  mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, {},
+  function(err) {
+    if (err) console.log(err).red;
+      else console.log('Mail is SEND to '+recipient+' subject: '+subject);
+  });
 }
 
 exports.info_sms = function (text)
@@ -37,6 +45,16 @@ function httpSmsRequest(key, phone, text)
   http.get(smsUrl, function(res) {
     console.log('Response sms: ' + res);
   });
+}
+
+exports.i = function (str) //i = info
+{
+  console.log(iTime()+' '+str);
+}
+
+exports.d = function (str) //d = debug
+{
+  console.log(dTime()+' '+str);
 }
 
 exports.getClientIP = function (req)
