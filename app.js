@@ -34,6 +34,17 @@ app.post('/api', function(req, res)
   sp.i('Ajax reqwest: ' + JSON.stringify(req.body));
 });
 
+app.get('/mail', function(req, res)
+{
+  res.render('mail.jade');
+  sp.i('Open mail page');
+});
+
+app.post('/sendMail', function(req, res) 
+{
+  sp.info_email('From hcons.tk', req.body.msg);
+})
+
 app.get('/id=:id([0-9]+)', function(req, res) 
 {
   res.send(req.params.id);

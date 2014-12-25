@@ -7,7 +7,7 @@ var mg = new Mailgun(config.email_key);
 
 exports.info_email = function (subject, emailТext)
 {
-  sendEmail(config.info_email, subject, emailТext);
+  this.sendEmail(config.info_email, subject, emailТext);
 }
 
 exports.sendEmail = function (recipient, subject, emailТext)
