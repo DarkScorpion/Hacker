@@ -5,37 +5,61 @@ var Mailgun = require('mailgun').Mailgun;
 var config = require('./config.json');
 var mg = new Mailgun(config.email_key);
 
-exports.info_email = function (subject, emailТext)
-{
-  this.sendEmail(config.info_email, subject, emailТext);
-}
-
-exports.sendEmail = function (recipient, subject, emailТext)
-{
-  var standartFrom = 'nodejs@mySite.com'
-
-  mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, {},
-  function(err) {
-    if (err) console.log(err).red;
-      else console.log('Mail is SEND to '+recipient+' subject: '+subject);
-  });
-}
-
-exports.info_sms = function (text)
-{
-  var isSend = '???';
-  var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
-    && typeof process.env.phone !== 'undefined');
-
-  if (isVariableCorrect) {
-    httpSmsRequest(process.env.sms_key, process.env.phone, text);
-    isSend = ' Sms SEND:'.green;
-  }
-  else isSend = ' Sms NOT send:'.red;
+var supportLibrary = { //variables and function of module
   
-  console.log(iTime() + isSend + '\n\t' + text);
-}
+  info_email : function (subject, emailТext)
+  {
+    this.sendEmail(config.info_email, subject, emailТext);
+  },
 
+  sendEmail : function (recipient, subject, emailТext)
+  {
+    var standartFrom = 'nodejs@mySite.com'
+
+    mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, {},
+    function(err) {
+      if (err) console.log(err).red;
+        else console.log('Mail is SEND to '+recipient+' subject: '+subject);
+    });
+  },
+
+  info_sms : function (text)
+  {
+    var isSend = '???';
+    var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
+      && typeof process.env.phone !== 'undefined');
+
+    if (isVariableCorrect) {
+      httpSmsRequest(process.env.sms_key, process.env.phone, text);
+      isSend = ' Sms SEND:'.green;
+    }
+    else isSend = ' Sms NOT send:'.red;
+    
+    console.log(iTime() + isSend + '\n\t' + text);
+  },
+
+  i : function (str) //i = info
+  {
+    console.log(iTime()+' '+str);
+  },
+
+  d : function (str) //d = debug
+  {
+    console.log(dTime()+' '+str);
+  },
+
+  getClientIP : function (req)
+  {
+    with(req)
+      return (headers['x-forwarded-for'] || '').split(',')[0] 
+        || connection.remoteAddress;
+  }
+
+};
+
+module.exports = supportLibrary;
+
+//Supporte of support library functions =))
 function httpSmsRequest(key, phone, text)
 {
   var smsUrl = 'http://sms.ru/sms/send?api_id=' + key +
@@ -45,23 +69,6 @@ function httpSmsRequest(key, phone, text)
   http.get(smsUrl, function(res) {
     console.log('Response sms: ' + res);
   });
-}
-
-exports.i = function (str) //i = info
-{
-  console.log(iTime()+' '+str);
-}
-
-exports.d = function (str) //d = debug
-{
-  console.log(dTime()+' '+str);
-}
-
-exports.getClientIP = function (req)
-{
-  with(req)
-    return (headers['x-forwarded-for'] || '').split(',')[0] 
-      || connection.remoteAddress;
 }
 
 function iTime()
