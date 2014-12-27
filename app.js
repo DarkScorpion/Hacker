@@ -9,10 +9,6 @@ app.use(express.bodyParser()); //for ajax json
 app.use(express.favicon('web/other/console.ico')); //icon of site
 app.use(express.static(__dirname + '/web')); //for css and js files
 
-app.listen(process.env.VCAP_APP_PORT || 3000, function() {
-  sp.i('NodeJS is runing');
-});
-
 app.get('/', function(req, res)
 {
   res.render('hacker.jade');
@@ -78,4 +74,8 @@ app.get('*', function(req, res)
 {
   res.render('error404.jade');
   sp.i('Wrong params: '+req.params[0]);
+});
+
+app.listen(process.env.VCAP_APP_PORT || 3000, function() {
+  sp.i('NodeJS is runing');
 });
