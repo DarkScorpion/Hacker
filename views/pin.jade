@@ -7,13 +7,10 @@ html
   script(src='/js/jquery-1.7.2.min.js')
   script(src='/js/pin.js')
   body
-  - var colNumber = 8
-  table.tb
+  table.table-main
       tr
         td.leftPin
-          - for (var i = 0; i < colNumber; i++) {
-              .code-block
-          - }
+          include layout/codeBlocks
         td.mainPin
           div.num-box
             .numitem 1
@@ -29,6 +26,4 @@ html
             .numitem 0
             .numitem @
         td.rightPin
-          - for (var i = 0; i < colNumber; i++) {
-              .code-block
-          - }
+          include layout/codeBlocks

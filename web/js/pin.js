@@ -6,10 +6,10 @@ $(document).ready(function() {
 
   var changeNumbers = setInterval(function () {
     codeBlocks.each(function() {
-      randNum = parseInt(RandomNumber(1000, 9999));
+      randNum = parseInt(RandomNumber(1000, 9999)); //4-Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ
       $(this).html(randNum); 
    });
-   //clearInterval(changeNumbers); //окончание работы проверки
+   //clearInterval(changeNumbers); //РѕРєРѕРЅС‡Р°РЅРёРµ СЂР°Р±РѕС‚С‹ РїСЂРѕРІРµСЂРєРё
  }, timeout);
  
 });
