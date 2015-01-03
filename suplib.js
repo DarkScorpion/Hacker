@@ -59,7 +59,7 @@ var supportLibrary = { //variables and function of module
 
 module.exports = supportLibrary;
 
-//Supporte of support library functions =))
+//Support of support library functions =))
 function httpSmsRequest(key, phone, text)
 {
   var smsUrl = 'http://sms.ru/sms/send?api_id=' + key +
