@@ -8,22 +8,10 @@ html
   script(src='/js/pin.js')
   body
   table.table-main
-      tr
-        td.leftPin
-          include layout/codeBlocks
-        td.mainPin
-          div.num-box
-            .numitem 1
-            .numitem 2
-            .numitem 3
-            .numitem 4
-            .numitem 5
-            .numitem 6
-            .numitem 7
-            .numitem 8
-            .numitem 9
-            .numitem #
-            .numitem 0
-            .numitem @
-        td.rightPin
-          include layout/codeBlocks
+    tr
+      td.leftPin
+        include layout/codeBlocks
+      td.mainPin
+        include layout/pinBlock
+      td.rightPin
+        include layout/codeBlocks
