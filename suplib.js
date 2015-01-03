@@ -5,7 +5,7 @@ var Mailgun = require('mailgun').Mailgun;
 var config = require('./config.json');
 var mg = new Mailgun(config.email_key);
 
-var supportLibrary = { //variables and function of module
+module.exports = { //publick variables and metods of module
   
   info_email : function (subject, emailТext)
   {
@@ -55,11 +55,9 @@ var supportLibrary = { //variables and function of module
         || connection.remoteAddress;
   }
 
-};
+}; //end of module
 
-module.exports = supportLibrary;
-
-//Support of support library functions =))
+//Private metods of module
 function httpSmsRequest(key, phone, text)
 {
   var smsUrl = 'http://sms.ru/sms/send?api_id=' + key +
