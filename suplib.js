@@ -18,8 +18,8 @@ module.exports = { //publick variables and metods of module
 
     mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, {},
     function(err) {
-      if (err) console.log(err).red;
-        else console.log('Mail is SEND to '+recipient+' subject: '+subject);
+      if (err) this.e(err);
+        else this.i('Mail is SEND to '+recipient+' subject: '+subject);
     });
   },
 
@@ -46,6 +46,11 @@ module.exports = { //publick variables and metods of module
   d : function (str) //d = debug
   {
     console.log(dTime()+' '+str);
+  },
+
+  e : function(str) //e = error
+  {
+    console.log( (dTime()+' '+str).red );
   },
 
   getClientIP : function (req)
