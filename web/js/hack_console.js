@@ -1,7 +1,7 @@
 ﻿/*
 *(c) Copyright 2011 Simone Masiero. Some Rights Reserved. 
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
-*Modification by АлексАндр Смит 2014
+*Modification by АлексАндр Смит 2014-2015 (https://github.com/DarkScorpion)
 */
 
 $(function () {
@@ -17,15 +17,14 @@ var Typer = {
   text: null,
   accessCountimer: null,
   index: 0, //current cursor position
-  speed: 2, //speed of the Typer
-  file: "", //file, must be setted
+  speed: 3, //speed of the Typer
   blinkInterval: 500, //blink interval for cursor
-  init: function () { //inizialize Hacker Typer
+  init: function (filePath) { //inizialize Hacker Typer
     accessCountimer = setInterval(function () {
       Typer.updLstChr();
     }, this.blinkInterval); //inizialize timer for blinking cursor
-
-    $.get(Typer.file, function (data) { //get the text file
+    
+    $.get(filePath, function (data) { //get the text file
       Typer.text = data; //save the textfile in Typer.text
     });
   },
