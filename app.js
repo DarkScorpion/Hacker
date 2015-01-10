@@ -5,7 +5,6 @@ var express = require('express'),
 
 var sp = require('./suplib'); //connect support library
 
-//app.use(express.logger());
 app.set('views/', __dirname); //for jade rendering
 app.use(favicon('web/other/console.ico')); //icon of site
 app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
@@ -14,7 +13,7 @@ app.use(express.static(__dirname + '/web')); //for css and js files
 app.get('/', function(req, res)
 {
   res.render('hacker.jade');
-  sp.i('Open title page from ' + sp.getClientIP(req));
+  sp.i('Open title page from ' + sp.showCity(req));
 });
 
 app.get('/ajax', function(req, res)

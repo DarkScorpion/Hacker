@@ -1,5 +1,6 @@
 ﻿var http = require('http');
 var colors = require('colors');
+var request = require('request');
 var Mailgun = require('mailgun').Mailgun;
 
 var config = require('./config.json');
@@ -53,11 +54,15 @@ module.exports = { //publick variables and metods of module
     console.log( (dTime()+' '+str).red );
   },
 
-  getClientIP : function (req)
+  showCity : function(req)
   {
-    with(req)
-      return (headers['x-forwarded-for'] || '').split(',')[0] 
-        || connection.remoteAddress;
+    var testIP = '155.155.155.155';
+    getLocation(testIP, function(location) { //getLocation(getClientIP(req));
+      var result = location.city.name_en + ' ';
+      console.log(location.city.name_en);
+      return result;
+    });
+    
   }
 
 }; //end of module
@@ -65,12 +70,37 @@ module.exports = { //publick variables and metods of module
 //Private metods of module
 function httpSmsRequest(key, phone, text)
 {
-  var smsUrl = 'http://sms.ru/sms/send?api_id=' + key +
+  var sendSmsUrl = 'http://sms.ru/sms/send?api_id=' + key +
     '&to=' + phone +
     '&text=' + text.replace(' ', '+');
 
-  http.get(smsUrl, function(res) {
+  http.get(sendSmsUrl, function(res) {
     console.log('Response sms: ' + res);
+  });
+}
+
+function getClientIP (req)
+{
+  with(req)
+    return (headers['x-forwarded-for'] || '').split(',')[0]
+      || connection.remoteAddress;
+}
+
+function  getLocation (ip, callback)
+{
+  request({
+    uri: 'http://api.sypexgeo.net/json/'+ip,
+    method: 'GET',
+    encoding: 'utf-8'
+    }, function (err, res, body) {
+      
+      if (err) {
+        this.e(err);
+        return "error";
+      } else {
+        //console.log(body);
+        callback(JSON.parse(body));
+      }
   });
 }
 
