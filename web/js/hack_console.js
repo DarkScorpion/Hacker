@@ -19,6 +19,7 @@ var Typer = {
   index: 0, //current cursor position
   speed: 3, //speed of the Typer
   blinkInterval: 500, //blink interval for cursor
+  
   init: function (filePath) { //inizialize Hacker Typer
     accessCountimer = setInterval(function () {
       Typer.updateText();
@@ -72,8 +73,10 @@ var Typer = {
 
     } else if (Typer.text) { // otherway if text is loaded
       var cont = Typer.content(); // get the console content
-      if (cont.substring(cont.length - 1, cont.length) == "|") // if the last char is the blinking cursor
-        $("#console").html($("#console").html().substring(0, cont.length - 1)); // remove it before adding the text
+      if (cont.substring(cont.length - 1, cont.length) == "|") { // if the last char is the blinking cursor
+        var consoleDiv = $("#console");
+        consoleDiv.html(consoleDiv.html().substring(0, cont.length - 1)); // remove it before adding the text
+      }
       if (key.keyCode != 8) { // if key is not backspace
         Typer.index += Typer.speed; // add to the index the speed
       } else {
@@ -97,8 +100,10 @@ var Typer = {
 
   updateText: function () { // blinking cursor
     var cont = this.content(); // get console 
-    if (cont.substring(cont.length - 1, cont.length) == "|") // if last char is the cursor
-      $("#console").html($("#console").html().substring(0, cont.length - 1)); // remove it
+    if (cont.substring(cont.length - 1, cont.length) == "|") { // if last char is the cursor
+      var consoleDiv = $("#console");
+      consoleDiv.html(consoleDiv.html().substring(0, cont.length - 1)); // remove it
+    }
     else
       this.write("|"); // else write it
   }
