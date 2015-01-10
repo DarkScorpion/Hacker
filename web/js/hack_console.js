@@ -5,13 +5,12 @@
 */
 
 $(function () {
-    $(document).keydown(
-      function (event) {
-        Typer.addText(event); //Capture the keydown event and call the addText, this is executed on page load
-      }
-    );
-  }
-);
+  $(document).keydown(
+    function (keyEvent) {
+      Typer.addText(keyEvent); //Capture the keydown event and call the addText, this is executed on page load
+    }
+  );
+});
 
 var Typer = {
   text: null,
@@ -28,10 +27,6 @@ var Typer = {
     $.get(filePath, function (data) { //get the text file
       Typer.text = data; //save the textfile in Typer.text
     });
-  },
-
-  content: function () {
-    return $("#console").html(); //get console content
   },
 
   write: function (str) { //append to console content
@@ -73,7 +68,7 @@ var Typer = {
 
     } else if (Typer.text) { // otherway if text is loaded
       /* //A strange piece of code, without which everything continues to work!
-      var cont = Typer.content(); // get the console content
+      var cont = $("#console").html(); // get the console content
       if (cont.substring(cont.length - 1, cont.length) == "|") { // if the last char is the blinking cursor
         var consoleDiv = $("#console");
         consoleDiv.html(consoleDiv.html().substring(0, cont.length - 1)); // remove it before adding the text
@@ -101,12 +96,14 @@ var Typer = {
   },
 
   updateText: function () { // blinking cursor
-    var cont = this.content(); // get console 
-    if (cont.substring(cont.length - 1, cont.length) == "|") { // if last char is the cursor
-      var consoleDiv = $("#console");
-      consoleDiv.html(consoleDiv.html().substring(0, cont.length - 1)); // remove it
+    var console = $("#console"); // get console
+    var text = console.html(); // get content of console
+    if (text.substring(text.length - 1, text.length) == "|") { // if last char is the cursor
+      console.html(console.html().substring(0, text.length - 1)); // remove it
     }
-    else
+    else {
       this.write("|"); // else write it
+    }
   }
+
 }
