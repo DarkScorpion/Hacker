@@ -39,6 +39,17 @@ module.exports = { //publick variables and metods of module
     console.log(iTime() + isSend + '\n\t' + text);
   },
 
+  showCity : function(req)
+  {
+    var testIP = '155.155.155.155';
+    getLocation(testIP, function(err, location) { //getLocation(getClientIP(req));
+      if (err) return "error";
+      var result = location.city.name_en + ' ';
+      console.log(location.city.name_en);
+      return result;
+    });
+  },
+
   i : function (str) //i = info
   {
     console.log(iTime()+' '+str);
@@ -52,22 +63,28 @@ module.exports = { //publick variables and metods of module
   e : function(str) //e = error
   {
     console.log( (dTime()+' '+str).red );
-  },
-
-  showCity : function(req)
-  {
-    var testIP = '155.155.155.155';
-    getLocation(testIP, function(location) { //getLocation(getClientIP(req));
-      var result = location.city.name_en + ' ';
-      console.log(location.city.name_en);
-      return result;
-    });
-    
   }
 
 }; //end of module
 
 //Private metods of module
+function  getLocation (ip, callback)
+{
+  request({
+    uri: 'http://api.sypexgeo.net/json/'+ip,
+    method: 'GET',
+    encoding: 'utf-8'
+    }, function (err, res, body) {
+      
+      if (err) {
+        callback(err)
+      } else {
+        //console.log(body);
+        callback(null, JSON.parse(body));
+      }
+  });
+}
+
 function httpSmsRequest(key, phone, text)
 {
   var sendSmsUrl = 'http://sms.ru/sms/send?api_id=' + key +
@@ -84,24 +101,6 @@ function getClientIP (req)
   with(req)
     return (headers['x-forwarded-for'] || '').split(',')[0]
       || connection.remoteAddress;
-}
-
-function  getLocation (ip, callback)
-{
-  request({
-    uri: 'http://api.sypexgeo.net/json/'+ip,
-    method: 'GET',
-    encoding: 'utf-8'
-    }, function (err, res, body) {
-      
-      if (err) {
-        this.e(err);
-        return "error";
-      } else {
-        //console.log(body);
-        callback(JSON.parse(body));
-      }
-  });
 }
 
 function iTime()
