@@ -72,11 +72,13 @@ var Typer = {
       Typer.hidepop(); // hide all popups
 
     } else if (Typer.text) { // otherway if text is loaded
+      /* //A strange piece of code, without which everything continues to work!
       var cont = Typer.content(); // get the console content
       if (cont.substring(cont.length - 1, cont.length) == "|") { // if the last char is the blinking cursor
         var consoleDiv = $("#console");
         consoleDiv.html(consoleDiv.html().substring(0, cont.length - 1)); // remove it before adding the text
       }
+      */
       if (key.keyCode != 8) { // if key is not backspace
         Typer.index += Typer.speed; // add to the index the speed
       } else {
