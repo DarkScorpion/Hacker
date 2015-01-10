@@ -21,7 +21,7 @@ var Typer = {
   blinkInterval: 500, //blink interval for cursor
   init: function (filePath) { //inizialize Hacker Typer
     accessCountimer = setInterval(function () {
-      Typer.updLstChr();
+      Typer.updateText();
     }, this.blinkInterval); //inizialize timer for blinking cursor
     
     $.get(filePath, function (data) { //get the text file
@@ -95,7 +95,7 @@ var Typer = {
     }
   },
 
-  updLstChr: function () { // blinking cursor
+  updateText: function () { // blinking cursor
     var cont = this.content(); // get console 
     if (cont.substring(cont.length - 1, cont.length) == "|") // if last char is the cursor
       $("#console").html($("#console").html().substring(0, cont.length - 1)); // remove it
