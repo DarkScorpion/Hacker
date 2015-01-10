@@ -34,20 +34,20 @@ var Typer = {
     return false;
   },
 
-  makeAccess: function () { //create Access Granted popUp  FIXED!: popup is on top of the page and doesn't show is the page is scrolled
+  makeAccess: function () { //create Access Granted popUp  FIXED in css: popup is on top of the page and doesn't show is the page is scrolled
     Typer.hidepop(); //hide all popups
-    var ddiv = $("<div id='gran'>").html(""); //create new blank div and id "gran"
-    ddiv.addClass("accessGranted"); //add class to the div
-    ddiv.html("<h1>ACCESS GRANTED</h1>"); //set content of div
-    $(document.body).prepend(ddiv); //prepend div to body
+    var accessDiv = $("<div id='gran'>").html(""); //create new blank div and id "gran"
+    accessDiv.addClass("accessGranted"); //add class to the div for css
+    accessDiv.html("<h1>ACCESS GRANTED</h1>"); //set content of div
+    $(document.body).prepend(accessDiv); //prepend div to body
     return false;
   },
-  makeDenied: function () {//create Access Denied popUp  FIXED!: popup is on top of the page and doesn't show is the page is scrolled
+  makeDenied: function () {//create Access Denied popUp  FIXED in css: popup is on top of the page and doesn't show is the page is scrolled
     Typer.hidepop(); // hide all popups
-    var ddiv = $("<div id='deni'>").html(""); // create new blank div and id "deni"
-    ddiv.addClass("accessDenied");// add class to the div
-    ddiv.html("<h1>ACCESS DENIED</h1>");// set content of div
-    $(document.body).prepend(ddiv);// prepend div to body
+    var deniedDiv = $("<div id='deni'>").html(""); // create new blank div and id "deni"
+    deniedDiv.addClass("accessDenied");// add class to the div for css
+    deniedDiv.html("<h1>ACCESS DENIED</h1>");// set content of div
+    $(document.body).prepend(deniedDiv);// prepend div to body
     return false;
   },
 
