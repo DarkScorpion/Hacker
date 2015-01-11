@@ -13,7 +13,9 @@ app.use(express.static(__dirname + '/web')); //for css and js files
 app.get('/', function(req, res)
 {
   res.render('hacker.jade');
-  sp.i('Open title page from ' + sp.showCity(req));
+  sp.showCity(req);
+  sp.i('Open title page');
+
 });
 
 app.get('/ajax', function(req, res)

@@ -43,10 +43,13 @@ module.exports = { //publick variables and metods of module
   {
     var testIP = '155.155.155.155';
     getLocation(testIP, function(err, location) { //getLocation(getClientIP(req));
-      if (err) return "error";
-      var result = location.city.name_en + ' ';
-      console.log(location.city.name_en);
-      return result;
+      if (err) {
+        this.e("error");
+        return;
+      } else {
+        console.log('> IP: '+location.ip+', Country: '+
+          location.country.name_en+', City: '+location.city.name_en);
+      }
     });
   },
 
@@ -75,11 +78,9 @@ function  getLocation (ip, callback)
     method: 'GET',
     encoding: 'utf-8'
     }, function (err, res, body) {
-      
       if (err) {
         callback(err)
       } else {
-        //console.log(body);
         callback(null, JSON.parse(body));
       }
   });
