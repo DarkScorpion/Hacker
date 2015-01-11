@@ -39,18 +39,27 @@ module.exports = { //publick variables and metods of module
     console.log(iTime() + isSend + '\n\t' + text);
   },
 
+  getClientIP : function (req)
+  {
+    with(req)
+      return (headers['x-forwarded-for'] || '').split(',')[0]
+        || connection.remoteAddress;
+  },
+
   showCity : function(req)
   {
-    var testIP = '155.155.155.155';
-    getLocation(testIP, function(err, location) { //getLocation(getClientIP(req));
-      if (err) {
-        this.e("error");
-        return;
-      } else {
-        console.log('> IP: '+location.ip+', Country: '+
-          location.country.name_en+', City: '+location.city.name_en);
-      }
-    });
+    var IP = this.getClientIP(req);
+    if (IP != '127.0.0.1') {
+      getLocation(IP, function(err, location) { //getLocation(getClientIP(req));
+        if (err) {
+          this.e("error");
+          return;
+        } else {
+          console.log('> IP: '+location.ip+', Country: '+
+            location.country.name_en+', City: '+location.city.name_en);
+        }
+      });
+    }
   },
 
   i : function (str) //i = info
@@ -95,13 +104,6 @@ function httpSmsRequest(key, phone, text)
   http.get(sendSmsUrl, function(res) {
     console.log('Response sms: ' + res);
   });
-}
-
-function getClientIP (req)
-{
-  with(req)
-    return (headers['x-forwarded-for'] || '').split(',')[0]
-      || connection.remoteAddress;
 }
 
 function iTime()
