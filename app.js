@@ -42,7 +42,10 @@ app.get('/mail', function(req, res)
 
 app.post('/sendMail', function(req, res) 
 {
-  sp.info_email('From hcons.tk', req.body.msg);
+  sp.info_email('From hcons.tk', req.body.msg, function(err) {
+    if(err) sp.e('Info mail is NOT send!');
+      else res.send('Info mail is send!')
+  });
 })
 
 app.get('/id=:id([0-9]+)', function(req, res) 

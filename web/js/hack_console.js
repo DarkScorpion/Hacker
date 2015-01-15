@@ -22,7 +22,7 @@ var Typer = {
   init: function (filePath) { //inizialize Hacker Typer
     accessCountimer = setInterval(function () {
       Typer.updateText();
-    }, this.blinkInterval); //inizialize timer for blinking cursor
+    }, Typer.blinkInterval); //inizialize timer for blinking cursor
     
     $.get(filePath, function (data) { //get the text file
       Typer.text = data; //save the textfile in Typer.text
@@ -102,7 +102,7 @@ var Typer = {
       console.html(console.html().substring(0, text.length - 1)); // remove it
     }
     else {
-      this.write("|"); // else write it
+      Typer.write("|"); // else write it
     }
   }
 

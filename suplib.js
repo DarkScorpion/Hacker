@@ -8,19 +8,27 @@ var mg = new Mailgun(config.email_key);
 
 module.exports = { //publick variables and metods of module
   
-  info_email : function (subject, emailТext)
+  info_email : function (subject, emailТext, callback)
   {
-    this.sendEmail(config.info_email, subject, emailТext);
+    this.sendEmail(config.info_email, subject, emailТext, function(err) {
+      if (err) callback("error");
+        else callback(null);
+    });
   },
 
-  sendEmail : function (recipient, subject, emailТext)
+  sendEmail : function (recipient, subject, emailТext, callback)
   {
     var standartFrom = 'nodejs@mySite.com'
 
-    mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, {},
-    function(err) {
-      if (err) this.e(err);
-        else this.i('Mail is SEND to '+recipient+' subject: '+subject);
+    mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, 
+      {}, function(err) {
+      if (err) {
+        console.log(err.red);
+        callback('error');
+      } else {
+          console.log('Mail is SEND to '+recipient+' subject: '+subject);
+          callback(null);
+        }
     });
   },
 
@@ -52,8 +60,7 @@ module.exports = { //publick variables and metods of module
     if (IP != '127.0.0.1') {
       getLocation(IP, function(err, location) { //getLocation(getClientIP(req));
         if (err) {
-          this.e("error");
-          return;
+          console.log("error: get loacation".red);
         } else {
           console.log('> IP: '+location.ip+', Country: '+
             location.country.name_en+', City: '+location.city.name_en);
