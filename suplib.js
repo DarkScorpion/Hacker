@@ -4,14 +4,14 @@ var request = require('request');
 var Mailgun = require('mailgun').Mailgun;
 
 var _config = require('./config.json');
-var mg = new Mailgun(_config.email_key);
+var _mg = new Mailgun(_config.email_key);
 
 module.exports = { //publick variables and metods of module
   
   info_email : function (subject, emailТext, callback)
   {
     this.sendEmail(_config.info_email, subject, emailТext, function(err) {
-      if (err) callback("Error");
+      if (err) callback("error");
         else callback(null);
     });
   },
@@ -20,7 +20,7 @@ module.exports = { //publick variables and metods of module
   {
     var standartFrom = 'nodejs@mySite.com'
 
-    mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, 
+    _mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom,
       {}, function(err) {
       if (err) {
         callback('error');
