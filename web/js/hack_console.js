@@ -1,7 +1,7 @@
 ﻿/*
 *(c) Copyright 2011 Simone Masiero. Some Rights Reserved. 
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
-*Modification by АлексАндр Смит 2014-2015 (https://github.com/DarkScorpion)
+*Modification by Александр Смит 2014-2015 (https://github.com/DarkScorpion)
 */
 
 $(function () {
@@ -19,7 +19,8 @@ var Typer = {
   speed: 3, //speed of the Typer
   blinkInterval: 500, //blink interval for cursor
   
-  init: function (filePath) { //inizialize Hacker Typer
+  init: function (filePath) //inizialize Hacker Typer
+  {
     accessCountimer = setInterval(function () {
       Typer.updateText();
     }, Typer.blinkInterval); //inizialize timer for blinking cursor
@@ -29,12 +30,14 @@ var Typer = {
     });
   },
 
-  write: function (str) { //append to console content
+  write: function (str) //append to console content
+  {
     $("#console").append(str);
     return false;
   },
 
-  makeAccess: function () { //create Access Granted popUp  FIXED in css: popup is on top of the page and doesn't show is the page is scrolled
+  makeAccess: function () //create Access Granted popUp  FIXED in css: popup is on top of the page and doesn't show is the page is scrolled
+  {
     Typer.hidepop(); //hide all popups
     var accessDiv = $("<div id='gran'>").html(""); //create new blank div and id "gran"
     accessDiv.addClass("accessGranted"); //add class to the div for css
@@ -42,7 +45,8 @@ var Typer = {
     $(document.body).prepend(accessDiv); //prepend div to body
     return false;
   },
-  makeDenied: function () {//create Access Denied popUp  FIXED in css: popup is on top of the page and doesn't show is the page is scrolled
+  makeDenied: function () //create Access Denied popUp  FIXED in css: popup is on top of the page and doesn't show is the page is scrolled
+  {
     Typer.hidepop(); // hide all popups
     var deniedDiv = $("<div id='deni'>").html(""); // create new blank div and id "deni"
     deniedDiv.addClass("accessDenied");// add class to the div for css
@@ -51,12 +55,14 @@ var Typer = {
     return false;
   },
 
-  hidepop: function () { //remove all existing popups
+  hidepop: function () //remove all existing popups
+  {
     $("#deni").remove();
     $("#gran").remove();
   },
 
-  addText: function (key) { //Main function to add the code
+  addText: function (key) //Main function to add the code
+  {
     if (key.keyCode == 18) { // key 18 = alt key
       Typer.makeAccess(); // make access popup
       
@@ -95,7 +101,8 @@ var Typer = {
     }
   },
 
-  updateText: function () { // blinking cursor
+  updateText: function () // blinking cursor
+  {
     var console = $("#console"); // get console
     var text = console.html(); // get content of console
     if (text.substring(text.length - 1, text.length) == "|") { // if last char is the cursor
