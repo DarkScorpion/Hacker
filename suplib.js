@@ -3,15 +3,15 @@ var colors = require('colors');
 var request = require('request');
 var Mailgun = require('mailgun').Mailgun;
 
-var config = require('./config.json');
-var mg = new Mailgun(config.email_key);
+var _config = require('./config.json');
+var mg = new Mailgun(_config.email_key);
 
 module.exports = { //publick variables and metods of module
   
   info_email : function (subject, emailТext, callback)
   {
-    this.sendEmail(config.info_email, subject, emailТext, function(err) {
-      if (err) callback("error");
+    this.sendEmail(_config.info_email, subject, emailТext, function(err) {
+      if (err) callback("Error");
         else callback(null);
     });
   },
@@ -23,7 +23,6 @@ module.exports = { //publick variables and metods of module
     mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom, 
       {}, function(err) {
       if (err) {
-        console.log(err.red);
         callback('error');
       } else {
           console.log('Mail is SEND to '+recipient+' subject: '+subject);
@@ -58,9 +57,9 @@ module.exports = { //publick variables and metods of module
   {
     var IP = this.getClientIP(req);
     if (IP != '127.0.0.1') {
-      getLocation(IP, function(err, location) { //getLocation(getClientIP(req));
+      getLocation(IP, function(err, location) {
         if (err) {
-          console.log("error: get loacation".red);
+          console.log("Error: get location with IP: ".red + IP.yellow);
         } else {
           console.log('> IP: '+location.ip+', Country: '+
             location.country.name_en+', City: '+location.city.name_en);
@@ -74,14 +73,9 @@ module.exports = { //publick variables and metods of module
     console.log(iTime()+' '+str);
   },
 
-  d : function (str) //d = debug
-  {
-    console.log(dTime()+' '+str);
-  },
-
   e : function(str) //e = error
   {
-    console.log( (dTime()+' '+str).red );
+    console.log( (iTime()+' '+str).red );
   }
 
 }; //end of module
@@ -118,13 +112,5 @@ function iTime()
   var d = new Date();
   var s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
   var t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-  return '['+s+' '+t+']';
-}
-
-function dTime()
-{
-  var d = new Date();
-  var s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-  var t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+':'+d.getMilliseconds();
   return '['+s+' '+t+']';
 }
