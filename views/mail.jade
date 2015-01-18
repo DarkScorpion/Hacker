@@ -2,7 +2,9 @@ doctype html
 html
   head
   title jsMail
+  link(href='/css/site.css', type='text/css', rel='stylesheet')
   body
-  form(action='/sendMail', method='post')
-    input(type='text', name='msg')
-    input(type='submit', value='Отправить')
+  div#sendForm(align='center')
+    form(action='/sendMail', method='post')
+      input(type='text', name='msg')
+      input(type='submit', value='Отправить')
