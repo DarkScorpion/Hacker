@@ -1,10 +1,10 @@
 ﻿var http = require('http');
 var colors = require('colors');
 var request = require('request');
-var Mailgun = require('mailgun').Mailgun;
+var mailgun = require('mailgun').Mailgun;
 
 var _config = require('./config.json');
-var _mg = new Mailgun(_config.email_key);
+var _mg = new mailgun(_config.email_key);
 
 module.exports = { //publick variables and metods of module
   

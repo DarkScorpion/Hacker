@@ -38,6 +38,7 @@ app.get('/mail', function(req, res)
 {
   res.render('mail.jade');
   sp.i('Open mail page');
+  sp.showCity(req);
 });
 
 app.post('/sendMail', function(req, res) 
