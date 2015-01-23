@@ -26,7 +26,7 @@ app.get('/ajax', function(req, res)
 
 app.post('/api', function(req, res)
 {
-  returnData = {
+  var returnData = {
     result: req.body.boxText //return box text
   };
 
@@ -46,9 +46,9 @@ app.post('/sendMail', function(req, res)
   sp.info_email('From hcons.tk', req.body.msg, function(err) {
     if(err) {
       sp.e('Info mail is NOT send!');
-      res.send('Mail is NOT send!');
+      res.send({result: 'Mail NOT send =('});
     } else {
-      res.send('Info mail is send!');
+      res.send({result: 'Mail is send =)'});
     }
   });
 })

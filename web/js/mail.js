@@ -2,22 +2,22 @@ var mailUrl = '/sendMail';
 
 $(document).ready(function() {
 
-  $('#ajaxButton').click(function() {
+  $('#btnMail').click(function() {
+    $('#info').html('Ожидание');
     var sData = {
-      boxText: $('#ajaxInput').val()
+      boxText: $('#text-mail').val()
     };
     
     $.ajax({
       type: 'POST',
       url: mailUrl,
-      dataType: 'json',
       data: sData,
+      dataType: 'json',
       success: function(data) {
-        console.log(JSON.stringify(data));
-        $('#ajaxOutput').html(data.result);
+        $('#info').html(data.result);
       },
       error: function(jqXHR, textStatus, errThrown) {
-        console.log(jqXHR + ' ' + textStatus + ' ' + errThrown);
+        $('#info').html('Ошибка при отправке данных');
       }
     });
   })
