@@ -1,6 +1,10 @@
 #config file
 config.json
 
+#Sublime Text
+*.sublime-project
+*.sublime-workspace
+
 #WebStorm
 .idea/
 
