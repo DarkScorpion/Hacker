@@ -4,8 +4,9 @@ $(document).ready(function() {
 
   $('#btnMail').click(function() {
     $('#info').html('Ожидание');
+    
     var sData = {
-      boxText: $('#text-mail').val()
+      message: $('#text-mail').val()
     };
     
     $.ajax({

@@ -33,7 +33,7 @@ exports.mail = function(req, res)
 
 exports.sendMail = function(req, res) 
 {
-  sp.info_email('From hcons.tk', req.body.msg, function(err) {
+  sp.info_email('From hcons.tk', req.body.message, function(err) {
     if(err) {
       sp.e('Info mail is NOT send!');
       res.send({result: 'Mail NOT send =('});

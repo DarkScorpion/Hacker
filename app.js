@@ -28,6 +28,5 @@ app.get('/girl=:girlName;:imageUrl;', routes.girl);
 app.get('*', routes.error404);
 
 app.listen(process.env.VCAP_APP_PORT || 3000, function() {
-  console.log(new Date);
-  console.log('NodeJS is runing');
+  console.log(new Date+' NodeJS is runing');
 });
