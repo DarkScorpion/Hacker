@@ -1,12 +1,13 @@
-doctype html
-html
-  head
+extends main-layout
+
+block head
   title Codes
   link(href='/css/pin.css', rel='stylesheet', type='text/css')
   link(href='/css/hacker.css', rel='stylesheet', type='text/css')
   script(src='/js/jquery-1.7.2.min.js')
   script(src='/js/pin.js')
-  body
+
+block content
   table.table-main
     tr
       td.leftPin

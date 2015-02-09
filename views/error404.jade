@@ -1,8 +1,9 @@
-﻿doctype html
-html(lang='ru')
-  head
-    title Где-то, что-то не так
-  body
+﻿extends main-layout
+
+block head
+  title Где-то, что-то не так
+  
+block content
   div#container.col(align='center')
     h1 Ошибка 404
     img(src="/img/error404.jpg")

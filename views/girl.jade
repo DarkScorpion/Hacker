@@ -1,10 +1,11 @@
-doctype html
-html(lang='ru')
-  head
-    title Самой любимой
-    link(type='text/css', rel='stylesheet', href='/css/site.css')
-  body
-    h1(align='center') Самая любимая и красивая
-    div#container.col(align='center')
-      p img(src='#{iUrl}')
-      p #{gName}
+extends main-layout
+
+block head
+  title Самой любимой
+  link(type='text/css', rel='stylesheet', href='/css/site.css')
+
+block content
+  h1(align='center') Самая любимая и красивая
+  div#container.col(align='center')
+    p img(src='#{iUrl}')
+    p #{gName}
