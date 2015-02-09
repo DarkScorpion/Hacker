@@ -3,14 +3,14 @@ var sp = require('./suplib'); //connect support library
 
 exports.index = function(req, res)
 {
-  res.render('hacker.jade');
+  res.render('hacker');
   sp.showCity(req);
   sp.i('Open title page');
 };
 
 exports.ajax = function(req, res)
 {
-  res.render('ajax.jade');
+  res.render('ajax');
   sp.i('Ajax page open');
 }
 
@@ -26,7 +26,7 @@ exports.api = function(req, res)
 
 exports.mail = function(req, res)
 {
-  res.render('mail.jade');
+  res.render('mail');
   sp.i('Open mail page');
   sp.showCity(req);
 }
@@ -45,7 +45,7 @@ exports.sendMail = function(req, res)
 
 exports.pin = function(req, res)
 {
-  res.render('pin.jade');
+  res.render('pin');
   sp.i('Pin page open');
 }
 
@@ -64,7 +64,7 @@ exports.name = function(req, res)
 exports.girl = function(req, res) 
 {
   sp.i('Open girls page!');
-  res.render('girl.jade', 
+  res.render('girl', 
   {
     gName: req.params.girlName,
     iUrl: req.params.imageUrl
@@ -73,6 +73,6 @@ exports.girl = function(req, res)
 
 exports.error404 = function(req, res) 
 {
-  res.render('error404.jade');
+  res.render('error404');
   sp.i('Wrong params: '+req.params[0]);
 }

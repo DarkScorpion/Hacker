@@ -6,6 +6,7 @@ var express = require('express'),
 var routes = require('./routes.js');
 
 app.set('views/', __dirname); //for jade rendering
+app.set('view engine', 'jade'); //jade is default viewer
 app.use(favicon('web/other/console.ico')); //icon of site
 app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
 app.use(express.static(__dirname + '/web')); //for css and js files
