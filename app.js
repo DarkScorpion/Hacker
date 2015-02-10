@@ -5,7 +5,7 @@ var express = require('express'),
 
 var routes = require('./routes.js');
 
-app.set('views/', __dirname); //for jade rendering
+app.set('views', __dirname+'/views'); //for jade rendering
 app.set('view engine', 'jade'); //jade is default viewer
 app.use(favicon('web/other/console.ico')); //icon of site
 app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
@@ -28,5 +28,5 @@ app.get('/girl=:girlName;:imageUrl;', routes.girl);
 app.get('*', routes.error404);
 
 app.listen(process.env.VCAP_APP_PORT || 3000, function() {
-  console.log(new Date+' NodeJS is runing');
+  console.log(new Date()+' NodeJS is runing');
 });
