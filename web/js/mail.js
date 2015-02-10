@@ -5,14 +5,14 @@ $(document).ready(function() {
   $('#btnMail').click(function() {
     $('#info').html('Ожидание');
     
-    var sData = {
+    var sendData = {
       message: $('#text-mail').val()
     };
     
     $.ajax({
       type: 'POST',
       url: mailUrl,
-      data: sData,
+      data: sendData,
       dataType: 'json',
       success: function(data) {
         $('#info').html(data.result);
