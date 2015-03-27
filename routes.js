@@ -58,7 +58,7 @@ exports.id = function(req, res)
 exports.name = function(req, res)
 {
   res.send('Hello '+req.params.name+' '+req.params.last);
-  sp.i('Name='+req.params.name+' Last='+req.params.last);
+  sp.i('Name='+req.params.name+' '+req.params.last);
 }
 
 exports.girl = function(req, res) 

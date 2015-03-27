@@ -70,12 +70,12 @@ module.exports = { //publick variables and metods of module
 
   i : function (str) //i = info
   {
-    console.log(iTime()+' '+str);
+    console.log(iTime()+str);
   },
 
   e : function(str) //e = error
   {
-    console.log( (iTime()+' '+str).red );
+    console.log( (iTime()+str).red );
   }
 
 }; //end of module
@@ -112,5 +112,5 @@ function iTime()
   var d = new Date();
   var s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
   var t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-  return '['+s+' '+t+']';
+  return '['+s+' '+t+'] ';
 }
