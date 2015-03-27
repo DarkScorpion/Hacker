@@ -1,5 +1,5 @@
 
-var sp = require('./suplib'); //connect support library
+var sp = require('./util.js'); //connect support library
 
 exports.index = function(req, res)
 {
