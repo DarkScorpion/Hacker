@@ -4,8 +4,8 @@ var sp = require('./util.js'); //connect support library
 exports.index = function(req, res)
 {
   res.render('hacker');
-  sp.showCity(req);
   sp.i('Open title page');
+  sp.showCity(req);
 };
 
 exports.ajax = function(req, res)

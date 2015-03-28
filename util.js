@@ -23,7 +23,7 @@ module.exports = { //publick variables and metods of module
     _mg.sendText(standartFrom, recipient, subject, emailТext, standartFrom,
       {}, function(err) {
       if (err) {
-        callback('error');
+        callback('error: mg send');
       } else {
           console.log('Mail is SEND to '+recipient+' subject: '+subject);
           callback(null);
@@ -41,7 +41,9 @@ module.exports = { //publick variables and metods of module
       httpSmsRequest(process.env.sms_key, process.env.phone, text);
       isSend = ' Sms SEND:'.green;
     }
-    else isSend = ' Sms NOT send:'.red;
+    else {
+      isSend = ' Sms NOT send:'.red;
+    }
     
     console.log(iTime() + isSend + '\n\t' + text);
   },
