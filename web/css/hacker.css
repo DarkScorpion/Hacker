@@ -6,42 +6,6 @@ body {
   font-family: monospace;
 }
 
-.tb {
-  width: 100%;
-  cellspacing: 0;
-  cellpadding: 0;
-}
-
-#dgirl {
-  position: fixed;
-  top: 50px;
-  left: 50px;
-}
-
-#cube1 {
-  position: fixed;
-  top: 50px;
-  right: 50px;
-}
-
-#cube2 {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-}
-
-.leftcol {
-  width: 35%;
-}
-
-.textcol {
-
-}
-
-.rightcol {
-  width: 20%
-}
-
 .accessGranted {
   position: fixed;
   top: 200px;
