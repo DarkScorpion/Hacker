@@ -1,7 +1,7 @@
 
 var sp = require('./util.js'); //connect support library
 
-exports.index = function(req, res)
+exports.main = function(req, res)
 {
   res.render('hacker');
   sp.i('Open title page');

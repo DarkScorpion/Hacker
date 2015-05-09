@@ -11,7 +11,7 @@ app.use(favicon('web/other/console.ico')); //icon of site
 app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
 app.use(express.static(__dirname + '/web')); //for css and js files
 
-app.get('/', routes.index);
+app.get('/', routes.main);
 
 app.get('/ajax', routes.ajax);
 app.post('/api', routes.api);
