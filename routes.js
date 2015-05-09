@@ -36,7 +36,7 @@ exports.sendMail = function(req, res)
 {
   sp.info_email('From hcons.tk', req.body.message, function(err) {
     if(err) {
-      sp.e('Info mail is NOT send!');
+      log.error('Info mail is NOT send!');
       res.send({result: 'Mail NOT send =('});
     } else {
       res.send({result: 'Mail is send =)'});
@@ -58,14 +58,17 @@ exports.id = function(req, res)
 
 exports.name = function(req, res)
 {
-  res.send('Hello '+req.params.name+' '+req.params.last);
-  log.info('Name='+req.params.name+' '+req.params.last);
+  var name = req.params.name;
+  var lastName = req.params.last;
+
+  res.send('Hello '+name+' '+lastName);
+  log.info('Name='+name+' '+lastName);
 };
 
 exports.girl = function(req, res) 
 {
-  log.info('Open girls page!'); res.render('girl',
-  {
+  log.info('Open girls page!');
+  res.render('girl', {
     gName: req.params.girlName,
     iUrl: req.params.imageUrl
   });
