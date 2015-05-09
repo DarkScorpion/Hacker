@@ -1,9 +1,9 @@
 var express = require('express'),
     app = express(), //create server Express
     bodyParser = require('body-parser'),
-    favicon = require('serve-favicon'),
-    log = require('./lib/intel');
+    favicon = require('serve-favicon');
 
+var log = require('./lib/intel');
 var routes = require('./routes.js');
 
 app.set('view engine', 'jade'); //jade is default viewer

@@ -1,5 +1,5 @@
 ﻿var http = require('http');
-var colors = require('colors');
+var log = require('./lib/intel');
 var request = require('request');
 var mailgun = require('mailgun').Mailgun;
 
@@ -25,7 +25,7 @@ module.exports = { //publick variables and metods of module
       if (err) {
         callback('error');
       } else {
-          console.log('Mail is SEND to '+recipient+' subject: '+subject);
+          log.info('Mail is SEND to '+recipient+' subject: '+subject);
           callback(null);
         }
     });
@@ -39,11 +39,11 @@ module.exports = { //publick variables and metods of module
 
     if (isVariableCorrect) {
       httpSmsRequest(process.env.sms_key, process.env.phone, text);
-      isSend = ' Sms SEND:'.green;
+      isSend = ' Sms SEND:';
     }
-    else isSend = ' Sms NOT send:'.red;
+    else isSend = ' Sms NOT send:';
     
-    console.log(iTime() + isSend + '\n\t' + text);
+    log.info(isSend + '\n\t' + text);
   },
 
   getClientIP : function (req)
@@ -59,23 +59,13 @@ module.exports = { //publick variables and metods of module
     if (IP != '127.0.0.1') {
       getLocation(IP, function(err, location) {
         if (err) {
-          console.log("Error: get location with IP: ".red + IP.yellow);
+          log.error("Error: get location with IP: " + IP);
         } else {
-          console.log('> IP: '+location.ip+', Country: '+
+          console.log(':> IP: '+location.ip+', Country: '+
             location.country.name_en+', City: '+location.city.name_en);
         }
       });
     }
-  },
-
-  i : function (str) //i = info
-  {
-    console.log(iTime()+str);
-  },
-
-  e : function(str) //e = error
-  {
-    console.log( (iTime()+str).red );
   }
 
 }; //end of module
@@ -103,14 +93,6 @@ function httpSmsRequest(key, phone, text)
     '&text=' + text.replace(' ', '+');
 
   http.get(sendSmsUrl, function(res) {
-    console.log('Response sms: ' + res);
+    log.info('Response sms: ' + res);
   });
-}
-
-function iTime()
-{
-  var d = new Date();
-  var s = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-  var t = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-  return '['+s+' '+t+'] ';
 }
