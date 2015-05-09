@@ -30,6 +30,4 @@ app.get('*', routes.error404);
 
 app.listen(process.env.VCAP_APP_PORT || 3000, function() {
   log.info('NodeJS is runing');
-  //log.debug('debug');
-  //log.warn('warn');
 });
