@@ -1,7 +1,8 @@
 var express = require('express'),
     app = express(), //create server Express
     bodyParser = require('body-parser'),
-    favicon = require('serve-favicon');
+    favicon = require('serve-favicon'),
+    log = require('./lib/intel');
 
 var routes = require('./routes.js');
 
@@ -28,5 +29,7 @@ app.get('/girl=:girlName;:imageUrl;', routes.girl);
 app.get('*', routes.error404);
 
 app.listen(process.env.VCAP_APP_PORT || 3000, function() {
-  console.log(new Date()+' NodeJS is runing');
+  log.info('NodeJS is runing');
+  //log.debug('debug');
+  //log.warn('warn');
 });
