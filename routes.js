@@ -56,13 +56,13 @@ exports.id = function(req, res)
   log.info('id='+req.params.id);
 };
 
-exports.name = function(req, res)
+exports.hello = function(req, res)
 {
-  var name = req.params.name;
-  var lastName = req.params.last;
+  var name = req.query.name;
+  var lastName = req.query.last;
 
   res.send('Hello '+name+' '+lastName);
-  log.info('Name='+name+' '+lastName);
+  log.info(req.query);
 };
 
 exports.girl = function(req, res) 
