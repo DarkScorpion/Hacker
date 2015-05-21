@@ -3,7 +3,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     favicon = require('serve-favicon');
 
-var log = require('./lib/intel');
+var log = require('./lib/intel.js');
 var routes = require('./routes.js');
 
 app.set('view engine', 'jade'); //jade is default viewer

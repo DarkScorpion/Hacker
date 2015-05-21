@@ -1,5 +1,5 @@
 ﻿var http = require('http');
-var log = require('./lib/intel');
+var log = require('./lib/intel.js');
 var request = require('request');
 var mailgun = require('mailgun').Mailgun;
 
