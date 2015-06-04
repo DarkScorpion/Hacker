@@ -1,6 +1,8 @@
 
 var sp = require('./util.js');
+var sms = require('./lib/sms.js');
 var log = require('./lib/intel.js');
+var email = require('./lib/email.js');
 
 exports.main = function(req, res)
 {
@@ -34,7 +36,7 @@ exports.mail = function(req, res)
 
 exports.sendMail = function(req, res) 
 {
-  sp.info_email('From hcons.tk', req.body.message, function(err) {
+  email.info('From hcons.tk', req.body.message, function(err) {
     if(err) {
       log.error('Info mail is NOT send!');
       res.send({result: 'Mail NOT send =('});
