@@ -36,7 +36,7 @@ exports.mail = function(req, res)
 
 exports.sendMail = function(req, res) 
 {
-  email.info('From hcons.tk', req.body.message, function(err) {
+  email.info(req.body.message, function(err) {
     if(err) {
       log.error('Info mail is NOT send!');
       res.send({result: 'Mail NOT send =('});
