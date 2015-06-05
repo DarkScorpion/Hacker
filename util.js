@@ -1,6 +1,6 @@
 ﻿
-var log = require('./lib/intel.js');
 var request = require('request');
+var log = require('./lib/intel.js');
 
 module.exports = { //publick variables and metods of module
 
