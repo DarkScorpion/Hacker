@@ -1,25 +1,8 @@
-﻿var http = require('http');
+﻿
 var log = require('./lib/intel.js');
 var request = require('request');
 
 module.exports = { //publick variables and metods of module
-
-  info_sms : function (text)
-  {
-    var isSend = '???';
-    var isVariableCorrect = (typeof process.env.sms_key !== 'undefined'
-      && typeof process.env.phone !== 'undefined');
-
-    if (isVariableCorrect) {
-      httpSmsRequest(process.env.sms_key, process.env.phone, text);
-      isSend = ' Sms SEND:';
-    }
-    else {
-      isSend = ' Sms NOT send:';
-    }
-    
-    log.info(isSend + '\n\t' + text);
-  },
 
   getClientIP : function (req)
   {
@@ -36,7 +19,7 @@ module.exports = { //publick variables and metods of module
         if (err) {
           log.error("Error: get location with IP: " + IP);
         } else {
-          console.log(':> IP: '+location.ip+', Country: '+
+          log.info(':> IP: '+location.ip+', Country: '+
             location.country.name_en+', City: '+location.city.name_en);
         }
       });
@@ -58,16 +41,5 @@ function  getLocation (ip, callback)
       } else {
         callback(null, JSON.parse(body));
       }
-  });
-}
-
-function httpSmsRequest(key, phone, text)
-{
-  var sendSmsUrl = 'http://sms.ru/sms/send?api_id=' + key +
-    '&to=' + phone +
-    '&text=' + text.replace(' ', '+');
-
-  http.get(sendSmsUrl, function(res) {
-    log.info('Response sms: ' + res);
   });
 }

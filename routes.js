@@ -60,20 +60,10 @@ exports.id = function(req, res)
 
 exports.hello = function(req, res)
 {
-  var name, lastName;
   var notSet = '!not set!';
 
-  if (req.query.name) {
-    name = req.query.name;
-  } else {
-    name = notSet;
-  }
-
-  if (req.query.last) {
-    lastName = req.query.last;
-  } else {
-    lastName = notSet;
-  }
+  var name = req.query.name || notSet;
+  var lastName = req.query.last || notSet;
 
   res.send('Hello '+name+' '+lastName);
   log.info(req.query);
