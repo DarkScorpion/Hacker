@@ -1,5 +1,5 @@
 
-var sp = require('./util.js');
+var sp = require('./lib/util.js');
 //var sms = require('./lib/sms.js');
 var log = require('./lib/intel.js');
 var email = require('./lib/email.js');
@@ -38,7 +38,7 @@ exports.sendMail = function(req, res)
 {
   email.info(req.body.message, function(err) {
     if(err) {
-      log.error('Info mail is NOT send!');
+      log.error(err);
       res.send({result: 'Mail NOT send =('});
     } else {
       res.send({result: 'Mail is send =)'});
@@ -54,8 +54,10 @@ exports.pin = function(req, res)
 
 exports.id = function(req, res) 
 {
-  res.send(req.params.id);
-  log.info('id='+req.params.id);
+  var id = req.params.id;
+
+  res.send(id);
+  log.info('id='+id);
 };
 
 exports.hello = function(req, res)
@@ -67,15 +69,6 @@ exports.hello = function(req, res)
 
   res.send('Hello '+name+' '+lastName);
   log.info(req.query);
-};
-
-exports.girl = function(req, res) 
-{
-  log.info('Open girls page!');
-  res.render('girl', {
-    gName: req.params.girlName,
-    iUrl: req.params.imageUrl
-  });
 };
 
 exports.error404 = function(req, res) 

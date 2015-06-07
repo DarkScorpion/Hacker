@@ -22,9 +22,8 @@ app.post('/sendMail', routes.sendMail);
 
 app.get('/pin', routes.pin);
 
-app.get('/id=:id([0-9]+)', routes.id);
 app.get('/hello', routes.hello);
-app.get('/girl=:girlName;:imageUrl;', routes.girl);
+app.get('/id=:id([0-9]+)', routes.id);
 
 app.get('*', routes.error404);
 
