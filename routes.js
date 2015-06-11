@@ -37,7 +37,7 @@ exports.mail = function(req, res)
 exports.sendMail = function(req, res) 
 {
   email.info(req.body.message, function(err) {
-    if(err) {
+    if (err) {
       log.error(err);
       res.send({result: 'Mail NOT send =('});
     } else {
