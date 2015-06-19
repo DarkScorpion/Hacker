@@ -3,7 +3,7 @@ extends main-layout
 block head
   title Hacker Console
   meta(charset='utf-8')
-  //meta(name='viewport', content='width=device-width, initial-scale=1')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
   link(href='/bs/css/bootstrap.min.css', type='text/css', rel='stylesheet')
   link(href='/css/hacker.css', rel='stylesheet', type='text/css')
   script(src='/js/jquery.js', type='text/javascript')
@@ -13,11 +13,11 @@ block head
 
 block content
   div.container-fluid
-    div.col-xs-4
+    div.col-xs-4.hidden-xs
       img#dgirl.img-responsive(src='/img/dance_girl.gif')
     div.col-xs-4
       div#console
-    div.col-xs-4
+    div.col-xs-4.hidden-xs
       img#cube1.img-responsive(src='/img/orb.gif')
       p
       img#cube2.img-responsive(src='/img/cube.gif')
