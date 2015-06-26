@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'),
     app = express(), //create server Express
     bodyParser = require('body-parser'),

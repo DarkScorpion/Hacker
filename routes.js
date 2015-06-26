@@ -1,3 +1,4 @@
+'use strict';
 
 var sp = require('./lib/util.js');
 //var sms = require('./lib/sms.js');
@@ -68,7 +69,7 @@ exports.hello = function(req, res)
   var lastName = req.query.last || notSet;
 
   res.send('Hello '+name+' '+lastName);
-  log.info(req.query);
+  log.info('Hello page: '+JSON.stringify(req.query));
 };
 
 exports.error404 = function(req, res) 
