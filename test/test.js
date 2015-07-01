@@ -38,7 +38,7 @@ describe('Routes test', function()
     });
   });
 
-  it('/id', function(done) {
+  it('/id (correct)', function(done) {
     request.get(_baseUrl+'/id=5', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
@@ -47,7 +47,23 @@ describe('Routes test', function()
     });
   });
 
-  it('/hello', function(done) {
+  it('/id (void)', function(done) {
+    request.get(_baseUrl+'/id', function(err, res, body) {
+      assert.equal(err, null);
+      assert.equal(res.statusCode , 404);
+      done();
+    });
+  });
+
+  it('/id (string)', function(done) {
+    request.get(_baseUrl+'/id=aaa', function(err, res, body) {
+      assert.equal(err, null);
+      assert.equal(res.statusCode , 404);
+      done();
+    });
+  });
+
+  it('/hello (correct)', function(done) {
     request.get(_baseUrl+'/hello?name=aaa&last=bbb', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
@@ -56,7 +72,16 @@ describe('Routes test', function()
     });
   });
 
-  it('/notFound', function(done) {
+  it('/hello (void)', function(done) {
+    request.get(_baseUrl+'/hello', function(err, res, body) {
+      assert.equal(err, null);
+      assert.equal(res.statusCode , 200);
+      assert.equal(body, 'Hello !not set! !not set!');
+      done();
+    });
+  });
+
+  it('/notFound or 404', function(done) {
     request.get(_baseUrl+'/notFound', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 404);
