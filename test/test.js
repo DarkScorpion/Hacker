@@ -2,12 +2,16 @@
 var assert = require('assert');
 var request = require('request');
 
-var _baseUrl = 'http://localhost:3000';
+function testUrl(route, callback)
+{
+  var baseUrl = 'http://localhost:3000';
+  request.get(baseUrl+route, callback);
+}
 
 describe('Routes test', function()
 {
   it('/index', function(done) {
-    request.get(_baseUrl+'/', function(err, res, body) {
+   testUrl('/', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       done();
@@ -15,7 +19,7 @@ describe('Routes test', function()
   });
 
   it('/ajax', function(done) {
-    request.get(_baseUrl+'/ajax', function(err, res, body) {
+    testUrl('/ajax', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       done();
@@ -23,7 +27,7 @@ describe('Routes test', function()
   });
 
   it('/mail', function(done) {
-    request.get(_baseUrl+'/mail', function(err, res, body) {
+    testUrl('/mail', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       done();
@@ -31,7 +35,7 @@ describe('Routes test', function()
   });
 
   it('/pin', function(done) {
-    request.get(_baseUrl+'/pin', function(err, res, body) {
+    testUrl('/pin', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       done();
@@ -39,7 +43,7 @@ describe('Routes test', function()
   });
 
   it('/id (correct)', function(done) {
-    request.get(_baseUrl+'/id=5', function(err, res, body) {
+    testUrl('/id=5', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       assert.equal(body, 5);
@@ -48,7 +52,7 @@ describe('Routes test', function()
   });
 
   it('/id (void)', function(done) {
-    request.get(_baseUrl+'/id', function(err, res, body) {
+    testUrl('/id', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 404);
       done();
@@ -56,7 +60,7 @@ describe('Routes test', function()
   });
 
   it('/id (string)', function(done) {
-    request.get(_baseUrl+'/id=aaa', function(err, res, body) {
+    testUrl('/id=aaa', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 404);
       done();
@@ -64,7 +68,7 @@ describe('Routes test', function()
   });
 
   it('/hello (correct)', function(done) {
-    request.get(_baseUrl+'/hello?name=aaa&last=bbb', function(err, res, body) {
+    testUrl('/hello?name=aaa&last=bbb', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       assert.equal(body, 'Hello aaa bbb');
@@ -73,7 +77,7 @@ describe('Routes test', function()
   });
 
   it('/hello (void)', function(done) {
-    request.get(_baseUrl+'/hello', function(err, res, body) {
+    testUrl('/hello', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 200);
       assert.equal(body, 'Hello !not set! !not set!');
@@ -82,7 +86,7 @@ describe('Routes test', function()
   });
 
   it('/notFound or 404', function(done) {
-    request.get(_baseUrl+'/notFound', function(err, res, body) {
+    testUrl('/notFound', function(err, res, body) {
       assert.equal(err, null);
       assert.equal(res.statusCode , 404);
       done();
