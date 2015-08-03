@@ -7,6 +7,7 @@ var express = require('express'),
 
 var log = require('./lib/intel.js');
 var routes = require('./routes.js');
+var api = require('./api-routes.js');
 
 app.set('view engine', 'jade'); //jade is default viewer
 app.set('views', __dirname+'/views'); //for jade rendering
@@ -15,17 +16,14 @@ app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
 app.use(express.static(__dirname + '/web')); //for css and js files
 
 app.get('/', routes.main);
-
 app.get('/ajax', routes.ajax);
-app.post('/api', routes.api);
-
 app.get('/mail', routes.mail);
-app.post('/sendMail', routes.sendMail);
-
 app.get('/pin', routes.pin);
-
 app.get('/hello', routes.hello);
 app.get('/id=:id([0-9]+)', routes.id);
+
+app.post('/api/ajax', api.ajax);
+app.post('/api/sendMail', api.sendMail);
 
 app.get('*', routes.error404);
 

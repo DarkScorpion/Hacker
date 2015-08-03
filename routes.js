@@ -1,9 +1,7 @@
 'use strict';
 
 var sp = require('./lib/util.js');
-//var sms = require('./lib/sms.js');
 var log = require('./lib/intel.js');
-var email = require('./lib/email.js');
 
 exports.main = function(req, res)
 {
@@ -18,33 +16,11 @@ exports.ajax = function(req, res)
   log.info('Ajax page open');
 };
 
-exports.api = function(req, res)
-{
-  var returnData = {
-    result: req.body.boxText //return box text
-  };
-
-  res.send(returnData);
-  log.info('Ajax reqwest: ' + JSON.stringify(req.body));
-};
-
 exports.mail = function(req, res)
 {
   res.render('mail');
   log.info('Open mail page');
   sp.showCity(req);
-}
-
-exports.sendMail = function(req, res) 
-{
-  email.info(req.body.message, function(err) {
-    if (err) {
-      log.error(err);
-      res.send({result: 'Mail NOT send =('});
-    } else {
-      res.send({result: 'Mail is send =)'});
-    }
-  });
 }
 
 exports.pin = function(req, res)

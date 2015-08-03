@@ -1,4 +1,4 @@
-var mailUrl = '/sendMail';
+var mailUrl = '/api/sendMail';
 
 $(document).ready(function() {
 

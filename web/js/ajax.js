@@ -1,4 +1,4 @@
-var ajaxUrl = '/api';
+var ajaxUrl = '/api/ajax';
 
 $(document).ready(function() {
 
