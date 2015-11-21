@@ -53,4 +53,5 @@ exports.error404 = function(req, res)
   res.status(404);
   res.render('error404');
   log.info('Wrong params: '+req.params[0]);
+  sp.showCity(req);
 };
