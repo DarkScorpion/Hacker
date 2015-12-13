@@ -10,10 +10,9 @@ var routes = require('./routes.js');
 var api = require('./api-routes.js');
 
 app.set('view engine', 'jade'); //jade is default viewer
-app.set('views', __dirname+'/views'); //for jade rendering
 app.use(favicon('web/other/console.ico')); //icon of site
 app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
-app.use(express.static(__dirname + '/web')); //for css and js files
+app.use(express.static('web')); //for css and js files
 
 app.get('/', routes.main);
 app.get('/ajax', routes.ajax);
