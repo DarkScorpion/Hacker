@@ -13,10 +13,11 @@
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "supertest": "^1.2.0"
   },
   "scripts": {
-    "test": "node app.js | mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
