@@ -7,7 +7,6 @@ exports.main = function(req, res)
 {
   res.render('hacker');
   log.info('Open title page');
-  sp.showCity(req);
 };
 
 exports.ajax = function(req, res)
@@ -20,7 +19,6 @@ exports.mail = function(req, res)
 {
   res.render('mail');
   log.info('Open mail page');
-  sp.showCity(req);
 }
 
 exports.pin = function(req, res)
@@ -53,5 +51,4 @@ exports.error404 = function(req, res)
   res.status(404);
   res.render('error404');
   log.info('Wrong params: '+req.params[0]);
-  sp.showCity(req);
 };
