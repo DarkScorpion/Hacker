@@ -6,13 +6,15 @@ var express = require('express'),
     favicon = require('serve-favicon');
 
 var log = require('./lib/intel.js');
+
 var routes = require('./routes.js');
 var api = require('./api-routes.js');
 
 app.set('view engine', 'jade'); //jade is default viewer
-app.use(favicon('web/other/console.ico')); //icon of site
+app.set('views', __dirname + '/views/'); //jade is default viewer
+app.use(favicon(__dirname + '/web/other/console.ico')); //icon of site
 app.use(bodyParser.urlencoded({ extended: false })); //for ajax json
-app.use(express.static('web')); //for css and js files
+app.use( express.static(__dirname + '/web/') ); //for css and js files
 
 app.get('/', routes.main);
 app.get('/ajax', routes.ajax);
@@ -24,6 +26,6 @@ app.get('/id=:id([0-9]+)', routes.id);
 app.post('/api/ajax', api.ajax);
 app.post('/api/sendMail', api.sendMail);
 
-app.get('*', routes.error404);
+app.all('*', routes.error404);
 
 module.exports = app;
