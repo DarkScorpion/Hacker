@@ -1,30 +1,25 @@
 'use strict';
 
-var sp = require('./lib/util.js');
-var log = require('./lib/intel.js');
+var log = require('../lib/intel.js');
 
 exports.main = function(req, res)
 {
   res.render('hacker');
-  log.info('Open title page');
 };
 
 exports.ajax = function(req, res)
 {
   res.render('ajax');
-  log.info('Ajax page open');
 };
 
 exports.mail = function(req, res)
 {
   res.render('mail');
-  log.info('Open mail page');
 }
 
 exports.pin = function(req, res)
 {
   res.render('pin');
-  log.info('Pin page open');
 };
 
 exports.id = function(req, res) 
@@ -46,9 +41,8 @@ exports.hello = function(req, res)
   log.info('Hello page: '+JSON.stringify(req.query));
 };
 
-exports.error404 = function(req, res) 
+exports.err404 = function(req, res)
 {
-  res.status(404);
-  res.render('error404');
+  res.status(404).render('error404');
   log.info('Wrong params: '+req.params[0]);
 };

@@ -1,8 +1,8 @@
 'use strict';
 
-//var sms = require('./lib/sms.js');
-var log = require('./lib/intel.js');
-var email = require('./lib/email.js');
+//var sms = require('../lib/sms.js');
+var log = require('../lib/intel.js');
+var email = require('../lib/email.js');
 
 exports.ajax = function(req, res)
 {
